@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/Icons">
+        <file>Textures/icons/small_logo.ico</file>
+    </qresource>
+</RCC>
