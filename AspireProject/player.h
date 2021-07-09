@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <string>
+
 struct pPosition
 {
     long x;
@@ -18,6 +20,17 @@ struct pMoveState
     /* ... */
     pMoveState() : moveLeft(false), moveRight(false), onGround(true), isSprint(false), isCrouch(false) {};
 };
+struct pSpriteList
+{
+    std::string spriteIdle;
+    std::string spriteWalk;
+    std::string spriteSprint;
+    std::string spriteJump;
+    std::string sptiteInAir;
+    std::string spriteCrouch;
+    std::string spriteCrowl;
+    /* ... */
+};
 
 class Player
 {
@@ -29,8 +42,8 @@ private:
     int height; //height of player's hitbox in pixels
     int width; //width of player's hitbox in pixels
     //int baseMeleeDamage;
-    pMoveState pState;
-
+    pMoveState State;
+    pSpriteList sprite; //player sprite list
 
 
 public:

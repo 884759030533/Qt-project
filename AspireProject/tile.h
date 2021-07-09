@@ -45,7 +45,7 @@ public:
     ~Tile();
     virtual void Draw();
     void Move(tPosition destination, int speed); //simple tile move
-    void Move(tPosition destination, moveFunction moveFunction); //moving tile with different animation
+    void Move(tPosition destination, moveFunction moveFunction); //moving tile with different move animation
 
 };
 

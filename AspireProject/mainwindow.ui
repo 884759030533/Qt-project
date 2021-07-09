@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="Icons.qrc">
-    <normaloff>:/new/Icons/Textures/icons/small_logo.ico</normaloff>:/new/Icons/Textures/icons/small_logo.ico</iconset>
+    <normaloff>:/resources/Textures/icons/small_logo.ico</normaloff>:/resources/Textures/icons/small_logo.ico</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -42,24 +42,48 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>30</y>
-      <width>461</width>
-      <height>441</height>
-     </rect>
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <property name="pixmap">
-     <pixmap resource="Icons.qrc">:/new/Icons/Textures/icons/small_logo.ico</pixmap>
+    <property name="topMargin">
+     <number>0</number>
     </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+    <property name="rightMargin">
+     <number>0</number>
     </property>
-   </widget>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="GameRender" name="LableCanvas">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::NoContextMenu</enum>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="Icons.qrc">:/resources/Textures/tiles/missing_texture.png</pixmap>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GameRender</class>
+   <extends>QLabel</extends>
+   <header>gamerender.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="Icons.qrc"/>
  </resources>

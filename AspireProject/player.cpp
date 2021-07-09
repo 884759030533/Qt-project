@@ -8,5 +8,5 @@ Player::Player(pPosition pos, int maxHealth, int height, int width)
     this->health = maxHealth;
     this->height = height;
     this->width = width;
-    this->pState = pMoveState();
+    this->State = pMoveState();
 }

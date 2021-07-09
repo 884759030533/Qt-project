@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <windows.h>
+#include <QPainter>
+#include <QMovie>
+#include "resourcemanager.h"
+//#include <windows.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,5 +26,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
+    ResourceManager *resourceManager;
 };
 #endif // MAINWINDOW_H

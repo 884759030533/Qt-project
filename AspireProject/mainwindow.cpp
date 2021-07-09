@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "resourcemanager.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,7 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::on_Timer);
-    timer->start(1000);
+    timer->start(1000/60);
+
+    ResourceManager RM;
+    resourceManager = &RM;
+
 }
 
 MainWindow::~MainWindow()
@@ -19,8 +24,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_Timer()
 {
+    //ResourceManager resources;
+
+    //QPixmap pixmap(":/resources/Textures/tiles/z_no_texture.bmp");
+    // resources.GetSprite("no_texture",resources.TilesStorage())
+    QPixmap canvas(ui->centralwidget->geometry().size());
+    //canvas.fill(Qt::transparent);
+    QPainter p;
+    p.begin(&canvas);
+    //p.drawPixmap(100, 100, resources.GetSprite("no_texture",resources.TilesStorage()));
+    p.drawPixmap(100, 100, resourceManager->tiles["no_texture"]);
+    //p.drawPixmap(300, 300, pixmap);
+
+    p.end();
+    ui->LableCanvas->setPixmap(canvas); // label draw grayscaled images // do not work properly
+
+
+
+
+
     //ui->label->grabKeyboard();
-    if (GetAsyncKeyState(VK_DOWN))
+    //if (GetAsyncKeyState(VK_DOWN))
 }
 
 

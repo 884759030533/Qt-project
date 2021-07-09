@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     entity.cpp \
+    gamerender.cpp \
     main.cpp \
     mainwindow.cpp \
     player.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     entity.h \
+    gamerender.h \
     mainwindow.h \
     player.h \
     resourcemanager.h \
