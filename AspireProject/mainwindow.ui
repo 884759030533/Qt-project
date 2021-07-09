@@ -41,7 +41,24 @@
     <height>16</height>
    </size>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>30</y>
+      <width>461</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="Icons.qrc">:/new/Icons/Textures/icons/small_logo.ico</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources>
   <include location="Icons.qrc"/>

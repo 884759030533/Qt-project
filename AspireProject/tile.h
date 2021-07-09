@@ -1,6 +1,8 @@
 #ifndef TILE_H
 #define TILE_H
 
+#include <string>
+
 struct tPosition //tile position in grid
 {
     long x;
@@ -17,7 +19,7 @@ struct tSize //size of a tile (for proper texture positioning)
 {
     unsigned int height;
     unsigned int width;
-    tSize(): height(10), width(10) {};
+    tSize(): height(40), width(10) {};
     tSize(unsigned int Height, unsigned int Width): height(Height), width(Width) {};
 };
 struct ImageType {}; //need image type
@@ -30,6 +32,7 @@ private:
     tPosition pos;
     tSize size;
     ImageType img;
+    std::string imgID;
 protected:
     bool solid; // can player collide with current tile
     bool dealDamage;
