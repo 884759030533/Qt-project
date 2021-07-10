@@ -1,22 +1,36 @@
 #ifndef RESOURCEMANAGER_H
 #define RESOURCEMANAGER_H
 
-#include <map>
+#include <vector>
 #include <QPainter>
+#include "tile.h"
+
 
 class ResourceManager
 {
-public:
-    std::map<std::string, QPixmap> tiles;
-    std::map<std::string, QPixmap> entities;
-    std::map<std::string, QPixmap> player;
-public:
+private:
     ResourceManager();
+    ResourceManager(const ResourceManager& );
+    ResourceManager& operator=( ResourceManager& );
     ~ResourceManager();
-    void AddSprite(std::string key, QPixmap pixmap, std::map<std::string, QPixmap> storage);
-    QPixmap GetSprite(std::string key, std::map<std::string, QPixmap> storage);
-    bool IsExist(std::string key, std::map<std::string, QPixmap> storage);
-    std::map<std::string, QPixmap>& TilesStorage() { return tiles; }
+    static ResourceManager * RM;
+
+    std::vector<QPixmap> tiles;
+    std::vector<QPixmap> entities;
+    std::vector<QPixmap> player;
+public:
+
+    std::vector<Tile> map;
+
+public:
+    static ResourceManager * CreateManager();
+    static void DeleteManager();
+
+    void AddSprite(int id, QPixmap &pixmap, std::vector<QPixmap> &storage);
+    QPixmap GetSprite(int id, std::vector<QPixmap> &storage);
+    bool IsExist(int id, std::vector<QPixmap> &storage);
+    std::vector<QPixmap>& TilesStorage() { return tiles; }
+    std::vector<Tile>& GetWorldMap() { return map; }
 };
 
 #endif // RESOURCEMANAGER_H

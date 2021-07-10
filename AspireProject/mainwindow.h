@@ -6,6 +6,8 @@
 #include <QPainter>
 #include <QMovie>
 #include "resourcemanager.h"
+#include "gamerender.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,8 +25,12 @@ private slots:
     void on_Timer();
 
 private:
+    void keyPressEvent(QKeyEvent *ev);
+    void keyReleaseEvent(QKeyEvent *ev);
     Ui::MainWindow *ui;
     QTimer *timer;
     ResourceManager *resourceManager;
+    GameRender *gameRender;
+
 };
 #endif // MAINWINDOW_H

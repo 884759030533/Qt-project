@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
@@ -21,6 +22,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QGridLayout *gridLayout;
     QLabel *LableCanvas;
 
     void setupUi(QMainWindow *MainWindow)
@@ -28,14 +30,21 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
+        MainWindow->setMinimumSize(QSize(800, 600));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        gridLayout = new QGridLayout(centralwidget);
+        gridLayout->setSpacing(0);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, 0, 0, 0);
         LableCanvas = new QLabel(centralwidget);
         LableCanvas->setObjectName(QString::fromUtf8("LableCanvas"));
-        LableCanvas->setGeometry(QRect(60, 40, 481, 391));
         LableCanvas->setPixmap(QPixmap(QString::fromUtf8(":/Tiles/Textures/tiles/missing_texture.png")));
         LableCanvas->setScaledContents(false);
         LableCanvas->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(LableCanvas, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);

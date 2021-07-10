@@ -11,13 +11,44 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, &QTimer::timeout, this, &MainWindow::on_Timer);
     timer->start(1000/60);
 
-    ResourceManager RM;
-    resourceManager = &RM;
+    resourceManager = ResourceManager::CreateManager(); // singletone!
+    gameRender = GameRender::CreateGameRender();
 }
 
 MainWindow::~MainWindow()
 {
+    ResourceManager::DeleteManager();
+    GameRender::DeleteGameRender();
     delete ui;
+
+}
+void MainWindow::keyReleaseEvent(QKeyEvent *ev)
+{
+
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *ev)
+{
+
+    /*
+
+    switch ()
+    {
+    case Qt::Key_Left:
+
+        break;
+    case Qt::Key_Right:
+
+        break;
+    case Qt::Key_Up:
+
+        break;
+    case Qt::Key_Down:
+
+        break;
+    }
+    */
+
 }
 
 void MainWindow::on_Timer()
@@ -30,8 +61,8 @@ void MainWindow::on_Timer()
     // resources.GetSprite("no_texture",resources.TilesStorage())
     QPixmap canvas(ui->LableCanvas->geometry().size());
     //canvas.fill(Qt::transparent);
-    QPainter p;
-    p.begin(&canvas);
+    //QPainter p;
+    //p.begin(&canvas);
     //p.setRenderHint(QPainter::SmoothPixmapTransform);
     //p.setRenderHint(QPainter::Antialiasing);
     //p.setRenderHint(QPainter::LosslessImageRendering);
@@ -42,10 +73,13 @@ void MainWindow::on_Timer()
 
     //p.drawPixmap(100, 100, resources.GetSprite("no_texture",resources.TilesStorage()));
     //p.drawPixmap(100, 100, resourceManager->tiles["no_texture"]);
-    p.drawPixmap(ui->LableCanvas->geometry().x() + ui->LableCanvas->geometry().width()/2, ui->LableCanvas->geometry().y() + ui->LableCanvas->geometry().height()/2, pixmap);
-
-    p.end();
-    ui->LableCanvas->setPixmap(canvas); // label draw grayscaled images // do not work properly
+    //p.drawPixmap(ui->LableCanvas->geometry().x() + ui->LableCanvas->geometry().width()/2, ui->LableCanvas->geometry().y() + ui->LableCanvas->geometry().height()/2, pixmap);
+    /*p.drawPixmap(ui->LableCanvas->geometry().x() + ui->LableCanvas->geometry().width()/2,
+                 ui->LableCanvas->geometry().y() + ui->LableCanvas->geometry().height()/2,
+                 resourceManager->GetSprite(0, resourceManager->TilesStorage()));
+    */
+    //p.end();
+    ui->LableCanvas->setPixmap(canvas);
 
 
 

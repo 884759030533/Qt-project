@@ -2,6 +2,8 @@
 #define TILE_H
 
 #include <string>
+#include <QPainter>
+#include <QMovie>
 
 struct tPosition //tile position in grid
 {
@@ -31,8 +33,8 @@ class Tile
 private:
     tPosition pos;
     tSize size;
-    ImageType img;
-    std::string imgID;
+    QPixmap img;
+    int ID;
 protected:
     bool solid; // can player collide with current tile
     bool dealDamage;
@@ -40,27 +42,30 @@ protected:
 public:
     Tile(long x, long y, long z); //quick spawn tile
     Tile(tPosition pos); //quick spawn tile
-    Tile(long x, long y, long z, unsigned int height, unsigned int width, bool isSolid, ImageType &image); //spawns regular tile
-    Tile(tPosition pos, tSize size); //spawns regular tile
+    Tile(long x, long y, long z, unsigned int height, unsigned int width, bool isSolid, QPixmap &image); //spawns regular tile
+    Tile(tPosition pos, tSize size, int ID); //spawns regular tile
     ~Tile();
     virtual void Draw();
     void Move(tPosition destination, int speed); //simple tile move
     void Move(tPosition destination, moveFunction moveFunction); //moving tile with different move animation
+    tPosition getPos() { return pos; }
+    tSize getSize() { return size; }
+    int getID() { return ID; }
 
 };
 
 class AnimatedTile : public Tile
 {
 private:
-    GifType gif;
+    QMovie gif;
 public:
-    AnimatedTile(tPosition pos, tSize size, GifType &gif) : Tile(pos, size)
+    AnimatedTile(tPosition pos, tSize size, int id) : Tile(pos, size, id)
     {
-        this->gif = gif;
+        //this->gif = gif;
     }
-    AnimatedTile(tPosition pos, tSize size,  bool isSolid, GifType &gif) : Tile(pos, size)
+    AnimatedTile(tPosition pos, tSize size,  bool isSolid, int id) : Tile(pos, size, id)
     {
-        this->gif = gif;
+        //this->gif = gif;
         this->solid = isSolid;
     }
     void Draw();
@@ -72,7 +77,7 @@ class Slope : public Tile
 private:
     short slopeType;
 public:
-    Slope(tPosition pos, tSize size, short slopeType) : Tile(pos, size)
+    Slope(tPosition pos, tSize size, short slopeType, int id) : Tile(pos, size, id)
     {
         this->slopeType = slopeType;
     }
