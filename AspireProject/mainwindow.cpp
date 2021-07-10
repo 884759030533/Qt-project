@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "resourcemanager.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     ResourceManager RM;
     resourceManager = &RM;
-
 }
 
 MainWindow::~MainWindow()
@@ -27,14 +25,24 @@ void MainWindow::on_Timer()
     //ResourceManager resources;
 
     //QPixmap pixmap(":/resources/Textures/tiles/z_no_texture.bmp");
+    QPixmap pixmap(":/Tiles/Textures/tiles/missing_texture.png");
+
     // resources.GetSprite("no_texture",resources.TilesStorage())
-    QPixmap canvas(ui->centralwidget->geometry().size());
+    QPixmap canvas(ui->LableCanvas->geometry().size());
     //canvas.fill(Qt::transparent);
     QPainter p;
     p.begin(&canvas);
+    //p.setRenderHint(QPainter::SmoothPixmapTransform);
+    //p.setRenderHint(QPainter::Antialiasing);
+    //p.setRenderHint(QPainter::LosslessImageRendering);
+
+    //p.translate(canvas.size().width() / 2, canvas.size().height() / 2); // rotate each image
+    //p.rotate(55); // degrees
+    //p.translate(-canvas.size().width() / 2, -canvas.size().height() / 2);
+
     //p.drawPixmap(100, 100, resources.GetSprite("no_texture",resources.TilesStorage()));
-    p.drawPixmap(100, 100, resourceManager->tiles["no_texture"]);
-    //p.drawPixmap(300, 300, pixmap);
+    //p.drawPixmap(100, 100, resourceManager->tiles["no_texture"]);
+    p.drawPixmap(ui->LableCanvas->geometry().x() + ui->LableCanvas->geometry().width()/2, ui->LableCanvas->geometry().y() + ui->LableCanvas->geometry().height()/2, pixmap);
 
     p.end();
     ui->LableCanvas->setPixmap(canvas); // label draw grayscaled images // do not work properly
@@ -46,6 +54,3 @@ void MainWindow::on_Timer()
     //ui->label->grabKeyboard();
     //if (GetAsyncKeyState(VK_DOWN))
 }
-
-
-

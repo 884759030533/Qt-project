@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/Tiles">
+        <file>Textures/tiles/missing_texture.png</file>
+    </qresource>
+    <qresource prefix="/Icons">
+        <file>Textures/icons/small_logo.ico</file>
+    </qresource>
+</RCC>

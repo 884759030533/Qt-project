@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/resources">
-        <file>Textures/icons/small_logo.ico</file>
-        <file>Textures/tiles/z_no_texture.bmp</file>
-        <file>Textures/tiles/missing_texture.png</file>
-    </qresource>
-</RCC>
