@@ -1,0 +1,10 @@
+debug/entity.o
+debug/gamerender.o
+debug/main.o
+debug/mainwindow.o
+debug/player.o
+debug/resourcemanager.o
+debug/tile.o
+debug/qrc_resources.o
+debug/moc_gamerender.o
+debug/moc_mainwindow.o

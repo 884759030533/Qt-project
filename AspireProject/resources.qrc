@@ -1,6 +1,8 @@
 <RCC>
     <qresource prefix="/Tiles">
         <file>Textures/tiles/missing_texture.png</file>
+        <file>Textures/tiles/clouds.png</file>
+        <file>Textures/tiles/Air_0.png</file>
     </qresource>
     <qresource prefix="/Icons">
         <file>Textures/icons/small_logo.ico</file>

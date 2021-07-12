@@ -1,25 +1,23 @@
 #include "tile.h"
 
-Tile::Tile(long X, long Y, long Z)
+
+Tile::Tile(tPosition pos, tSize size, int ID)
 {
-
-}
-
-Tile::Tile(tPosition Pos)
-{
-
-}
-
-Tile::Tile(long X, long Y, long Z, unsigned int Height, unsigned int Width, bool Solid/*, QPixmap &Image*/)
-{
-
-}
-
-Tile::Tile(tPosition Pos, tSize Size, int ID)
-{
-    this->pos = Pos;
-    this->size = Size;
+    this->pos = pos;
+    this->size = size;
     this->ID = ID;
+    this->properties.damage = 0;
+    this->properties.dealDamage = false;
+    this->properties.isVisible = false;
+    this->properties.solid = true;
+}
+
+Tile::Tile(tPosition pos, tSize size, int ID, tProperties properties)
+{
+    this->pos = pos;
+    this->size = size;
+    this->ID = ID;
+    this->properties = properties;
 }
 
 Tile::~Tile()

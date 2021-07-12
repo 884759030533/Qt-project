@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <QMovie>
+#include <QKeyEvent>
 #include "resourcemanager.h"
 #include "gamerender.h"
 

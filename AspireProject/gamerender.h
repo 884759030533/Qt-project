@@ -13,6 +13,15 @@ struct CamPosition
     CamPosition() : x(0), y(0) {};
     CamPosition(long X, long Y) : x(X), y(Y) {};
 };
+struct CamMoveState
+{
+    bool moveLeft;
+    bool moveRight;
+    bool moveUp;
+    bool moveDown;
+    CamMoveState(bool MoveLeft = false, bool MoveRight = false, bool MoveUp = false,
+                 bool MoveDown = false) : moveLeft(MoveLeft), moveRight(MoveRight), moveUp(MoveUp), moveDown(MoveDown) {};
+};
 
 class GameRender : public QLabel // AKA player camera
 {
@@ -34,6 +43,10 @@ public:
 
     void Initialize(ResourceManager *&resourceManager);
     void ScreenUpdate(QPixmap &canvas);
+
+    void MoveCamera(long xDest, long yDest) { cPos.x = xDest; cPos.y = yDest; }
+    CamPosition GetCamPos() { return cPos; }
+    CamMoveState cMoveState;
 
     void mouseMoveEvent(QMouseEvent *ev);
     void mousePressEvent(QMouseEvent *ev);
