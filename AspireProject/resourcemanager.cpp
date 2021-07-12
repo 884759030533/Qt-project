@@ -8,7 +8,21 @@ ResourceManager::ResourceManager()
     this->map.resize(256);
     /* Loading an entire library of sprites with a lots of code ... */
 
+    /* Loading map from file to memory */
     map[0] = Tile(tPosition(1, 1, 1),tSize(40, 40), 0);
+    /* Sorting for better use */
+    for (int tile = 0; tile < map.max_size(); tile++)
+    {
+        /*
+        switch (map[tile].getPos().layer)
+        {
+            case 0: //bottom layer
+        }
+        */
+    }
+
+
+
     //AddSprite("no_texture", QPixmap(":/resources/Textures/tiles/z_no_texture.bmp"), this->tiles); // do not work
     this->tiles[0] = QPixmap(":/Tiles/Textures/tiles/missing_texture.png"); // do not work too
 }

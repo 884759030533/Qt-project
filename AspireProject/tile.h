@@ -33,7 +33,7 @@ class Tile
 private:
     tPosition pos;
     tSize size;
-    QPixmap img;
+    //QPixmap img;
     int ID;
 protected:
     bool solid; // can player collide with current tile
@@ -42,7 +42,7 @@ protected:
 public:
     Tile(long x, long y, long z); //quick spawn tile
     Tile(tPosition pos); //quick spawn tile
-    Tile(long x, long y, long z, unsigned int height, unsigned int width, bool isSolid, QPixmap &image); //spawns regular tile
+    Tile(long x, long y, long z, unsigned int height, unsigned int width, bool isSolid/*, QPixmap &image*/); //spawns regular tile
     Tile(tPosition pos, tSize size, int ID); //spawns regular tile
     ~Tile();
     virtual void Draw();

@@ -15,12 +15,14 @@ private:
     ~ResourceManager();
     static ResourceManager * RM;
 
-    std::vector<QPixmap> tiles;
+    std::vector<QPixmap> tiles; // textures
     std::vector<QPixmap> entities;
     std::vector<QPixmap> player;
-public:
 
-    std::vector<Tile> map;
+    std::vector<Tile> map; // world map
+    std::vector<Tile> mapBot;
+    std::vector<Tile> mapMid;
+    std::vector<Tile> mapTop;
 
 public:
     static ResourceManager * CreateManager();

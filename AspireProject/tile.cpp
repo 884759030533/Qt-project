@@ -10,7 +10,7 @@ Tile::Tile(tPosition Pos)
 
 }
 
-Tile::Tile(long X, long Y, long Z, unsigned int Height, unsigned int Width, bool Solid, QPixmap &Image)
+Tile::Tile(long X, long Y, long Z, unsigned int Height, unsigned int Width, bool Solid/*, QPixmap &Image*/)
 {
 
 }

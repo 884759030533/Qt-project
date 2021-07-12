@@ -6,7 +6,15 @@
 #include <QMovie>
 #include "resourcemanager.h"
 
-class GameRender : public QLabel
+struct CamPosition
+{
+    long x;
+    long y;
+    CamPosition() : x(0), y(0) {};
+    CamPosition(long X, long Y) : x(X), y(Y) {};
+};
+
+class GameRender : public QLabel // AKA player camera
 {
     Q_OBJECT // ???
 private:
@@ -17,6 +25,8 @@ private:
     static GameRender * GR;
 
     ResourceManager *resources;
+    int tileSize;
+    CamPosition cPos;
 
 public:
     static GameRender * CreateGameRender();
