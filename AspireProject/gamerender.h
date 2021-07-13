@@ -37,6 +37,7 @@ private:
     int tileSize;
     CamPosition cPos;
 
+
 public:
     static GameRender * CreateGameRender();
     static void DeleteGameRender();

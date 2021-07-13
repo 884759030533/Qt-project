@@ -1,10 +1,33 @@
 <RCC>
     <qresource prefix="/Tiles">
-        <file>Textures/tiles/missing_texture.png</file>
-        <file>Textures/tiles/clouds.png</file>
-        <file>Textures/tiles/Air_0.png</file>
+        <file>Textures/tiles/air.png</file>
+        <file>Textures/tiles/blackstone_transfer_1.png</file>
+        <file>Textures/tiles/blackstone_transfer_2.png</file>
+        <file>Textures/tiles/blue_stone_1.png</file>
+        <file>Textures/tiles/blue_stone_2.png</file>
+        <file>Textures/tiles/blue_stone_3.png</file>
+        <file>Textures/tiles/blue_stone_4.png</file>
+        <file>Textures/tiles/blue_stone_moss.png</file>
+        <file>Textures/tiles/blue_stone_moss_1.png</file>
+        <file>Textures/tiles/blue_stone_moss_2.png</file>
+        <file>Textures/tiles/blue_stone_moss_inner_corner_1.png</file>
+        <file>Textures/tiles/blue_stone_moss_inner_corner_2.png</file>
+        <file>Textures/tiles/blue_stone_moss_outer_corner_1.png</file>
+        <file>Textures/tiles/blue_stone_moss_outer_corner_2.png</file>
+        <file>Textures/tiles/dark_blue_stone_1.png</file>
+        <file>Textures/tiles/dark_blue_stone_2.png</file>
+        <file>Textures/tiles/dark_blue_stone_3.png</file>
+        <file>Textures/tiles/dark_blue_stone_4.png</file>
+        <file>Textures/tiles/dark_blue_stone_transfer_1.png</file>
+        <file>Textures/tiles/dark_blue_stone_transfer_2.png</file>
+        <file>Textures/tiles/void.png</file>
+        <file>Textures/tiles/z_clouds.png</file>
+        <file>Textures/tiles/z_missing_texture.png</file>
+        <file>Textures/tiles/z_no_texture.bmp</file>
+        <file>Textures/tiles/z_oh_no_green.png</file>
     </qresource>
     <qresource prefix="/Icons">
         <file>Textures/icons/small_logo.ico</file>
+        <file>Textures/icons/small_icon_x2.png</file>
     </qresource>
 </RCC>

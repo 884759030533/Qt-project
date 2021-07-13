@@ -17,7 +17,17 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Aspire Project</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/Icons/Textures/icons/small_icon_x2.png</normaloff>:/Icons/Textures/icons/small_icon_x2.png</iconset>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>128</width>
+    <height>128</height>
+   </size>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -42,10 +52,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resources.qrc">:/Tiles/Textures/tiles/missing_texture.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
+       <pixmap resource="resources.qrc">:/Tiles/Textures/tiles/z_missing_texture.png</pixmap>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>

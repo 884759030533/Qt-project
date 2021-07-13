@@ -42,7 +42,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
     p.begin(&canvas);
     for (int layer = -1; layer <= 1; layer++) // background/middle/foreground layer
     {
-        for (int sublayer = 0; sublayer < 5; sublayer++) //
+        for (int sublayer = -2; sublayer <= 2; sublayer++) //
         {
             for (unsigned long long tile = 0; tile < resources->GetWorldMap().size(); tile++)
             {
@@ -51,7 +51,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                     switch (resources->GetWorldMap()[tile].getPos().layer)
                     {
                     case -1: //bottom layer // parallax < 1
-                        if (resources->GetWorldMap()[tile].getPos().layer == layer)
+                        if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
                         {
                             p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x+5,
                                          resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y+5,
@@ -59,7 +59,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                         }
                         break;
                     case 0: //mid layer // parallax = 1
-                        if (resources->GetWorldMap()[tile].getPos().layer == layer)
+                        if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
                         {
                             p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x,
                                          resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y,
@@ -67,7 +67,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                         }
                         break;
                     case 1: //top layer // parallax > 1
-                        if (resources->GetWorldMap()[tile].getPos().layer == layer)
+                        if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
                         {
                             p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x-5,
                                          resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y-5,

@@ -10,6 +10,7 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
@@ -31,6 +32,10 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
         MainWindow->setMinimumSize(QSize(800, 600));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/Icons/Textures/icons/small_icon_x2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
+        MainWindow->setIconSize(QSize(128, 128));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -39,8 +44,7 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         LableCanvas = new QLabel(centralwidget);
         LableCanvas->setObjectName(QString::fromUtf8("LableCanvas"));
-        LableCanvas->setPixmap(QPixmap(QString::fromUtf8(":/Tiles/Textures/tiles/missing_texture.png")));
-        LableCanvas->setScaledContents(false);
+        LableCanvas->setPixmap(QPixmap(QString::fromUtf8(":/Tiles/Textures/tiles/z_missing_texture.png")));
         LableCanvas->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(LableCanvas, 0, 0, 1, 1);
@@ -54,7 +58,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Aspire Project", nullptr));
         LableCanvas->setText(QString());
     } // retranslateUi
 

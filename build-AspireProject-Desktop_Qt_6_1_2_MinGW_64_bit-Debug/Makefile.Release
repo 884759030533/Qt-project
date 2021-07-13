@@ -126,10 +126,33 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: ../AspireProject/resources.qrc \
 		../../../Qt/6.1.2/mingw81_64/bin/rcc.exe \
-		../AspireProject/Textures/tiles/Air_0.png \
-		../AspireProject/Textures/tiles/clouds.png \
-		../AspireProject/Textures/tiles/missing_texture.png \
-		../AspireProject/Textures/icons/small_logo.ico
+		../AspireProject/Textures/tiles/blackstone_transfer_1.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_2.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_1.png \
+		../AspireProject/Textures/tiles/blue_stone_moss.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_transfer_2.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_1.png \
+		../AspireProject/Textures/tiles/void.png \
+		../AspireProject/Textures/tiles/z_no_texture.bmp \
+		../AspireProject/Textures/tiles/z_oh_no_green.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_2.png \
+		../AspireProject/Textures/tiles/blue_stone_2.png \
+		../AspireProject/Textures/tiles/z_clouds.png \
+		../AspireProject/Textures/tiles/blue_stone_3.png \
+		../AspireProject/Textures/tiles/air.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_transfer_1.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_3.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_4.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_1.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_outer_corner_2.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_outer_corner_1.png \
+		../AspireProject/Textures/tiles/blue_stone_4.png \
+		../AspireProject/Textures/tiles/blackstone_transfer_2.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_2.png \
+		../AspireProject/Textures/tiles/z_missing_texture.png \
+		../AspireProject/Textures/tiles/blue_stone_1.png \
+		../AspireProject/Textures/icons/small_logo.ico \
+		../AspireProject/Textures/icons/small_icon_x2.png
 	F:\Qt\6.1.2\mingw81_64\bin\rcc.exe -name resources ..\AspireProject\resources.qrc -o release\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -982,6 +1005,7 @@ release/mainwindow.o: ../AspireProject/mainwindow.cpp ../AspireProject/mainwindo
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qtextdocument.h \
 		ui_mainwindow.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/QVariant \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/QIcon \
 		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QApplication \
 		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qguiapplication.h \

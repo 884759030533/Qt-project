@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <QPainter>
+#include <string>
 #include "tile.h"
 
 
@@ -21,10 +22,6 @@ private:
 
     std::vector<Tile> map; // world map
 
-    std::vector<Tile> mapBot;
-    std::vector<Tile> mapMid;
-    std::vector<Tile> mapTop;
-
 public:
     static ResourceManager * CreateManager();
     static void DeleteManager();
@@ -35,9 +32,6 @@ public:
     bool IsExist(int id, std::vector<QPixmap> &storage);
     std::vector<QPixmap>& TilesStorage() { return tiles; }
     std::vector<Tile>& GetWorldMap() { return map; }
-    std::vector<Tile>& GetWorldMapBottom() { return mapBot; }
-    std::vector<Tile>& GetWorldMapMiddle() { return mapMid; }
-    std::vector<Tile>& GetWorldMapTop() { return mapTop; }
 
 };
 

@@ -58,6 +58,8 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
     case Qt::Key_S:
         gameRender->cMoveState.moveDown = true;
         break;
+    case Qt::Key_Escape:
+        close();
     }
 
 }
@@ -71,44 +73,12 @@ void CamMove(GameRender *&Camera)
 
 void MainWindow::on_Timer()
 {
-    //ResourceManager resources;
-
-    //QPixmap pixmap(":/resources/Textures/tiles/z_no_texture.bmp");
-    //QPixmap pixmap(":/Tiles/Textures/tiles/missing_texture.png");
-
-    // resources.GetSprite("no_texture",resources.TilesStorage())
     QPixmap canvas(ui->LableCanvas->geometry().size());
-    //canvas.fill(Qt::transparent);
-    QPainter p;
-    ////p.begin(&canvas);
-    //p.setRenderHint(QPainter::SmoothPixmapTransform);
-    //p.setRenderHint(QPainter::Antialiasing);
-    //p.setRenderHint(QPainter::LosslessImageRendering);
 
-    //p.translate(canvas.size().width() / 2, canvas.size().height() / 2); // rotate each image
-    //p.rotate(55); // degrees
-    //p.translate(-canvas.size().width() / 2, -canvas.size().height() / 2);
 
-    //p.drawPixmap(100, 100, resources.GetSprite("no_texture",resources.TilesStorage()));
-    //p.drawPixmap(100, 100, resourceManager->tiles["no_texture"]);
-    //p.drawPixmap(ui->LableCanvas->geometry().x() + ui->LableCanvas->geometry().width()/2, ui->LableCanvas->geometry().y() + ui->LableCanvas->geometry().height()/2, pixmap);
-    /*p.drawPixmap(ui->LableCanvas->geometry().x() + ui->LableCanvas->geometry().width()/2,
-                 ui->LableCanvas->geometry().y() + ui->LableCanvas->geometry().height()/2,
-                 resourceManager->GetSprite(0, resourceManager->TilesStorage()));
-    */
+
     CamMove(gameRender);
-//    if (gameRender->cMoveState.moveLeft) gameRender->MoveCamera(gameRender->GetCamPos().x-10, gameRender->GetCamPos().y);
-//    if (gameRender->cMoveState.moveRight) gameRender->MoveCamera(gameRender->GetCamPos().x+10, gameRender->GetCamPos().y);
-//    if (gameRender->cMoveState.moveUp) gameRender->MoveCamera(gameRender->GetCamPos().x, gameRender->GetCamPos().y-10);
-//    if (gameRender->cMoveState.moveDown) gameRender->MoveCamera(gameRender->GetCamPos().x, gameRender->GetCamPos().y+10);
     gameRender->ScreenUpdate(canvas);
-    ////p.end();
+
     ui->LableCanvas->setPixmap(canvas);
-
-
-
-
-
-    //ui->label->grabKeyboard();
-    //if (GetAsyncKeyState(VK_DOWN))
 }
