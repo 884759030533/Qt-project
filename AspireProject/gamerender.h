@@ -42,7 +42,6 @@ public:
     static GameRender * CreateGameRender();
     static void DeleteGameRender();
 
-    void Initialize(ResourceManager *&resourceManager);
     void ScreenUpdate(QPixmap &canvas);
 
     void MoveCamera(long xDest, long yDest) { cPos.x = xDest; cPos.y = yDest; }

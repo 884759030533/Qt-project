@@ -48,9 +48,6 @@
     </property>
     <item row="0" column="0">
      <widget class="QLabel" name="LableCanvas">
-      <property name="text">
-       <string/>
-      </property>
       <property name="pixmap">
        <pixmap resource="resources.qrc">:/Tiles/Textures/tiles/z_missing_texture.png</pixmap>
       </property>

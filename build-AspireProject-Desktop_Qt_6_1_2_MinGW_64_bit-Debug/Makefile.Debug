@@ -129,7 +129,6 @@ debug/qrc_resources.cpp: ../AspireProject/resources.qrc \
 		../AspireProject/Textures/tiles/blackstone_transfer_1.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_2.png \
 		../AspireProject/Textures/tiles/dark_blue_stone_1.png \
-		../AspireProject/Textures/tiles/blue_stone_moss.png \
 		../AspireProject/Textures/tiles/dark_blue_stone_transfer_2.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_1.png \
 		../AspireProject/Textures/tiles/void.png \
@@ -151,6 +150,7 @@ debug/qrc_resources.cpp: ../AspireProject/resources.qrc \
 		../AspireProject/Textures/tiles/dark_blue_stone_2.png \
 		../AspireProject/Textures/tiles/z_missing_texture.png \
 		../AspireProject/Textures/tiles/blue_stone_1.png \
+		../AspireProject/Files/levels/testlevel.level \
 		../AspireProject/Textures/icons/small_logo.ico \
 		../AspireProject/Textures/icons/small_icon_x2.png
 	F:\Qt\6.1.2\mingw81_64\bin\rcc.exe -name resources ..\AspireProject\resources.qrc -o debug\qrc_resources.cpp
@@ -317,6 +317,7 @@ debug/moc_gamerender.cpp: ../AspireProject/gamerender.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/quuid.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfactoryinterface.h \
 		../AspireProject/resourcemanager.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../AspireProject/tile.h \
 		debug/moc_predefs.h \
 		../../../Qt/6.1.2/mingw81_64/bin/moc.exe
@@ -478,6 +479,7 @@ debug/moc_mainwindow.cpp: ../AspireProject/mainwindow.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfactoryinterface.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/QKeyEvent \
 		../AspireProject/resourcemanager.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../AspireProject/tile.h \
 		../AspireProject/gamerender.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
@@ -668,6 +670,7 @@ debug/gamerender.o: ../AspireProject/gamerender.cpp ../AspireProject/gamerender.
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/quuid.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfactoryinterface.h \
 		../AspireProject/resourcemanager.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../AspireProject/tile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\gamerender.o ..\AspireProject\gamerender.cpp
 
@@ -827,6 +830,7 @@ debug/main.o: ../AspireProject/main.cpp ../AspireProject/mainwindow.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfactoryinterface.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/QKeyEvent \
 		../AspireProject/resourcemanager.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../AspireProject/tile.h \
 		../AspireProject/gamerender.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
@@ -996,6 +1000,7 @@ debug/mainwindow.o: ../AspireProject/mainwindow.cpp ../AspireProject/mainwindow.
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfactoryinterface.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/QKeyEvent \
 		../AspireProject/resourcemanager.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../AspireProject/tile.h \
 		../AspireProject/gamerender.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
@@ -1118,12 +1123,7 @@ debug/resourcemanager.o: ../AspireProject/resourcemanager.cpp ../AspireProject/r
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qfontinfo.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qfont.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qfontmetrics.h \
-		../AspireProject/tile.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtGui/QMovie \
-		../../../Qt/6.1.2/mingw81_64/include/QtGui/qmovie.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtGui/qimagereader.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qdebug.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qhash.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qmap.h \
@@ -1132,6 +1132,12 @@ debug/resourcemanager.o: ../AspireProject/resourcemanager.cpp ../AspireProject/r
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qstringconverter.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qset.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qcontiguouscache.h \
+		../AspireProject/tile.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/QMovie \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qmovie.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qimagereader.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/qcoreapplication.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/qeventloop.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qimageiohandler.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qiodevice.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qplugin.h \

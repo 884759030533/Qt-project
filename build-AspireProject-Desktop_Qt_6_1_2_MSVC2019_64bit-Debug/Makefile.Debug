@@ -194,8 +194,33 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_resources.cpp
 debug\qrc_resources.cpp: ..\AspireProject\resources.qrc \
 		..\..\..\Qt\6.1.2\msvc2019_64\bin\rcc.exe \
-		..\AspireProject\Textures\tiles\missing_texture.png \
-		..\AspireProject\Textures\icons\small_logo.ico
+		..\AspireProject\Textures\tiles\blackstone_transfer_1.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss_inner_corner_2.png \
+		..\AspireProject\Textures\tiles\dark_blue_stone_1.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss.png \
+		..\AspireProject\Textures\tiles\dark_blue_stone_transfer_2.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss_1.png \
+		..\AspireProject\Textures\tiles\void.png \
+		..\AspireProject\Textures\tiles\z_no_texture.bmp \
+		..\AspireProject\Textures\tiles\z_oh_no_green.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss_2.png \
+		..\AspireProject\Textures\tiles\blue_stone_2.png \
+		..\AspireProject\Textures\tiles\z_clouds.png \
+		..\AspireProject\Textures\tiles\blue_stone_3.png \
+		..\AspireProject\Textures\tiles\air.png \
+		..\AspireProject\Textures\tiles\dark_blue_stone_transfer_1.png \
+		..\AspireProject\Textures\tiles\dark_blue_stone_3.png \
+		..\AspireProject\Textures\tiles\dark_blue_stone_4.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss_inner_corner_1.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss_outer_corner_2.png \
+		..\AspireProject\Textures\tiles\blue_stone_moss_outer_corner_1.png \
+		..\AspireProject\Textures\tiles\blue_stone_4.png \
+		..\AspireProject\Textures\tiles\blackstone_transfer_2.png \
+		..\AspireProject\Textures\tiles\dark_blue_stone_2.png \
+		..\AspireProject\Textures\tiles\z_missing_texture.png \
+		..\AspireProject\Textures\tiles\blue_stone_1.png \
+		..\AspireProject\Textures\icons\small_logo.ico \
+		..\AspireProject\Textures\icons\small_icon_x2.png
 	F:\Qt\6.1.2\msvc2019_64\bin\rcc.exe -name resources ..\AspireProject\resources.qrc -o debug\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: debug\moc_predefs.h
@@ -338,11 +363,30 @@ debug\moc_gamerender.cpp: ..\AspireProject\gamerender.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpicture.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextdocument.h \
-		..\AspireProject\resourcemanager.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QPainter \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpainter.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextoption.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpen.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QMovie \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qmovie.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimagereader.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimageiohandler.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qplugin.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonobject.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcalendar.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborcommon.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h \
+		..\AspireProject\resourcemanager.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QDebug \
+		..\AspireProject\tile.h \
 		debug\moc_predefs.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\bin\moc.exe
 	F:\Qt\6.1.2\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "F:/Qt projects/Qt-project/build-AspireProject-Desktop_Qt_6_1_2_MSVC2019_64bit-Debug/debug/moc_predefs.h" -IF:/Qt/6.1.2/msvc2019_64/mkspecs/win32-msvc -I"F:/Qt projects/Qt-project/AspireProject" -IF:/Qt/6.1.2/msvc2019_64/include -IF:/Qt/6.1.2/msvc2019_64/include/QtWidgets -IF:/Qt/6.1.2/msvc2019_64/include/QtGui -IF:/Qt/6.1.2/msvc2019_64/include/QtCore -I. -I"F:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"F:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\AspireProject\gamerender.h -o debug\moc_gamerender.cpp
@@ -501,7 +545,16 @@ debug\moc_mainwindow.cpp: ..\AspireProject\mainwindow.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QKeyEvent \
 		..\AspireProject\resourcemanager.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QDebug \
+		..\AspireProject\tile.h \
+		..\AspireProject\gamerender.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextdocument.h \
 		debug\moc_predefs.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\bin\moc.exe
 	F:\Qt\6.1.2\msvc2019_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "F:/Qt projects/Qt-project/build-AspireProject-Desktop_Qt_6_1_2_MSVC2019_64bit-Debug/debug/moc_predefs.h" -IF:/Qt/6.1.2/msvc2019_64/mkspecs/win32-msvc -I"F:/Qt projects/Qt-project/AspireProject" -IF:/Qt/6.1.2/msvc2019_64/include -IF:/Qt/6.1.2/msvc2019_64/include/QtWidgets -IF:/Qt/6.1.2/msvc2019_64/include/QtGui -IF:/Qt/6.1.2/msvc2019_64/include/QtCore -I. -I"F:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\ATLMFC\include" -I"F:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\AspireProject\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -662,11 +715,30 @@ debug\gamerender.obj: ..\AspireProject\gamerender.cpp ..\AspireProject\gamerende
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QTransform \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpicture.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextdocument.h \
-		..\AspireProject\resourcemanager.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QPainter \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpainter.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextoption.h \
-		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpen.h
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpen.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QMovie \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qmovie.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimagereader.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimageiohandler.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qplugin.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonobject.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcalendar.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborcommon.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h \
+		..\AspireProject\resourcemanager.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QDebug \
+		..\AspireProject\tile.h
 
 debug\main.obj: ..\AspireProject\main.cpp ..\AspireProject\mainwindow.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QMainWindow \
@@ -822,7 +894,16 @@ debug\main.obj: ..\AspireProject\main.cpp ..\AspireProject\mainwindow.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QKeyEvent \
 		..\AspireProject\resourcemanager.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QDebug \
+		..\AspireProject\tile.h \
+		..\AspireProject\gamerender.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextdocument.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QApplication \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qapplication.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qguiapplication.h \
@@ -982,8 +1063,28 @@ debug\mainwindow.obj: ..\AspireProject\mainwindow.cpp ..\AspireProject\mainwindo
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QKeyEvent \
 		..\AspireProject\resourcemanager.h \
-		ui_mainwindow.h
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QDebug \
+		..\AspireProject\tile.h \
+		..\AspireProject\gamerender.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QLabel \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qlabel.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qframe.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpicture.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextdocument.h \
+		ui_mainwindow.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QVariant \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QApplication \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qapplication.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qguiapplication.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qinputmethod.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QGridLayout \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qgridlayout.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qlayout.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qlayoutitem.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\qboxlayout.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtWidgets\QWidget
 
 debug\player.obj: ..\AspireProject\player.cpp ..\AspireProject\player.h
 
@@ -1083,9 +1184,165 @@ debug\resourcemanager.obj: ..\AspireProject\resourcemanager.cpp ..\AspireProject
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qbrush.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfontinfo.h \
 		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfont.h \
-		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfontmetrics.h
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\QDebug \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\AspireProject\tile.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QMovie \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qmovie.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimagereader.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimageiohandler.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qplugin.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonobject.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcalendar.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborcommon.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h
 
-debug\tile.obj: ..\AspireProject\tile.cpp ..\AspireProject\tile.h
+debug\tile.obj: ..\AspireProject\tile.cpp ..\AspireProject\tile.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QPainter \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpainter.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtguiglobal.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qglobal.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qconfig.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qtcore-config.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qsystemdetection.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qprocessordetection.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qtypeinfo.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qsysinfo.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qlogging.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qflags.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qatomic.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qbasicatomic.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qgenericatomic.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qglobalstatic.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmutex.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qnumeric.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qversiontagging.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtgui-config.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qnamespace.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qtmetamacros.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qrect.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qhashfunctions.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstring.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qchar.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringview.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qbytearray.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qrefcount.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qarraydata.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qpair.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qarraydatapointer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qarraydataops.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcontainertools_impl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qbytearrayalgorithms.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qbytearrayview.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringliteral.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qanystringview.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qutf8stringview.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringtokenizer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringbuilder.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmargins.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qsize.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qpoint.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qscopedpointer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpixmap.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpaintdevice.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qwindowdefs.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qobjectdefs.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qcolor.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qrgb.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringlist.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qlist.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qiterator.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qbytearraylist.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qalgorithms.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringmatcher.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qrgba64.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qsharedpointer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qshareddata.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qobject.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcoreevent.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmetatype.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcompare.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdatastream.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qiodevicebase.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qiterable.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmetacontainer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcontainerinfo.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qtaggedpointer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmath.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qobject_impl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qproperty.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qpropertyprivate.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimage.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpixelformat.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtransform.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpolygon.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qregion.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qline.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qtextoption.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qpen.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qbrush.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfontinfo.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfont.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qfontmetrics.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\QMovie \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qmovie.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimagereader.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcoreapplication.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qeventloop.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdebug.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qhash.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qmap.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qshareddata_impl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qtextstream.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qstringconverter.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qset.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtGui\qimageiohandler.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qiodevice.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qplugin.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qpointer.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonobject.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qjsonvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborvalue.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qdatetime.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcalendar.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qlocale.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qvariant.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qcborcommon.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qregularexpression.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qurl.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\quuid.h \
+		..\..\..\Qt\6.1.2\msvc2019_64\include\QtCore\qfactoryinterface.h
 
 debug\qrc_resources.obj: debug\qrc_resources.cpp 
 

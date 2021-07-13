@@ -28,13 +28,15 @@ struct tProperties
 {
     bool isVisible; // for render optimization
     bool solid; // can player collide with current tile
+    int rotation;
     bool dealDamage; // do tile deal damage
     int damage;
 
     tProperties(bool IsVisible = false,
                 bool Solid = true,
+                int Rotation = 0, // 0=0, 1=90, 2=180, 3=240
                 bool DealDamage = false,
-                int Damage = 0) : isVisible(IsVisible), solid(Solid), dealDamage(DealDamage), damage(Damage) {}
+                int Damage = 0) : isVisible(IsVisible), solid(Solid), rotation(Rotation), dealDamage(DealDamage), damage(Damage) {}
 };
 
 typedef int (*moveFunction)(tPosition, int);

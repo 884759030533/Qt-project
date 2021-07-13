@@ -7,7 +7,6 @@
         <file>Textures/tiles/blue_stone_2.png</file>
         <file>Textures/tiles/blue_stone_3.png</file>
         <file>Textures/tiles/blue_stone_4.png</file>
-        <file>Textures/tiles/blue_stone_moss.png</file>
         <file>Textures/tiles/blue_stone_moss_1.png</file>
         <file>Textures/tiles/blue_stone_moss_2.png</file>
         <file>Textures/tiles/blue_stone_moss_inner_corner_1.png</file>
@@ -29,5 +28,8 @@
     <qresource prefix="/Icons">
         <file>Textures/icons/small_logo.ico</file>
         <file>Textures/icons/small_icon_x2.png</file>
+    </qresource>
+    <qresource prefix="/Level Data">
+        <file>Files/levels/testlevel.level</file>
     </qresource>
 </RCC>

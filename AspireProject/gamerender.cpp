@@ -30,16 +30,13 @@ void GameRender::DeleteGameRender()
     }
 }
 
-void GameRender::Initialize(ResourceManager *&resourceManager)
-{
-
-}
-
 void GameRender::ScreenUpdate(QPixmap &canvas)
 {
     //resources = ResourceManager::CreateManager();
     QPainter p;
+    QPixmap rotatePixmap(40, 40);
     p.begin(&canvas);
+    canvas.fill(Qt::white);
     for (int layer = -1; layer <= 1; layer++) // background/middle/foreground layer
     {
         for (int sublayer = -2; sublayer <= 2; sublayer++) //
@@ -60,7 +57,9 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                         break;
                     case 0: //mid layer // parallax = 1
                         if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
-                        {
+                        {                          
+
+
                             p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x,
                                          resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );
@@ -69,6 +68,21 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                     case 1: //top layer // parallax > 1
                         if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
                         {
+                            if (resources->GetWorldMap()[tile].getProperties().rotation)
+                            {
+                                rotatePixmap = QPixmap(resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()));
+                                //p.rotate(45);
+                                p.begin(&rotatePixmap);
+                                //p.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
+                                //p.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
+                                //p.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
+                                p.begin(&canvas);
+                                p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x,
+                                             resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y,
+                                             rotatePixmap );
+
+                            }
+                            else
                             p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x-5,
                                          resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y-5,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );

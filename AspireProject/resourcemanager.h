@@ -4,6 +4,11 @@
 #include <vector>
 #include <QPainter>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <QDebug>
+#include <QRandomGenerator>
+#include <QFile>
 #include "tile.h"
 
 

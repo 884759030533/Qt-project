@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     resourceManager = ResourceManager::CreateManager(); // singletone!
     gameRender = GameRender::CreateGameRender();
+
+    //for (int l = 0; l<2; l++) gameRender->cMoveState = CamMoveState(!l,!l,!l,!l);
 }
 
 MainWindow::~MainWindow()
@@ -32,10 +34,10 @@ void MainWindow::keyReleaseEvent(QKeyEvent *ev)
     case Qt::Key_D:
         gameRender->cMoveState.moveRight = false;
         break;
-    case Qt::Key_W:
+    case Qt::Key_W :
         gameRender->cMoveState.moveUp = false;
         break;
-    case Qt::Key_S:
+    case Qt::Key_S :
         gameRender->cMoveState.moveDown = false;
         break;
     }
@@ -49,13 +51,13 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
     case Qt::Key_A:
         gameRender->cMoveState.moveLeft = true;
         break;
-    case Qt::Key_D:
+    case Qt::Key_D :
         gameRender->cMoveState.moveRight = true;
         break;
-    case Qt::Key_W:
+    case Qt::Key_W :
         gameRender->cMoveState.moveUp = true;
         break;
-    case Qt::Key_S:
+    case Qt::Key_S :
         gameRender->cMoveState.moveDown = true;
         break;
     case Qt::Key_Escape:
@@ -65,10 +67,10 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
 }
 void CamMove(GameRender *&Camera)
 {
-    if (Camera->cMoveState.moveLeft) Camera->MoveCamera(Camera->GetCamPos().x-10, Camera->GetCamPos().y);
-    if (Camera->cMoveState.moveRight) Camera->MoveCamera(Camera->GetCamPos().x+10, Camera->GetCamPos().y);
-    if (Camera->cMoveState.moveUp) Camera->MoveCamera(Camera->GetCamPos().x, Camera->GetCamPos().y-10);
-    if (Camera->cMoveState.moveDown) Camera->MoveCamera(Camera->GetCamPos().x, Camera->GetCamPos().y+10);
+    if (Camera->cMoveState.moveLeft) Camera->MoveCamera(Camera->GetCamPos().x+10, Camera->GetCamPos().y);
+    if (Camera->cMoveState.moveRight) Camera->MoveCamera(Camera->GetCamPos().x-10, Camera->GetCamPos().y);
+    if (Camera->cMoveState.moveUp) Camera->MoveCamera(Camera->GetCamPos().x, Camera->GetCamPos().y+10);
+    if (Camera->cMoveState.moveDown) Camera->MoveCamera(Camera->GetCamPos().x, Camera->GetCamPos().y-10);
 }
 
 void MainWindow::on_Timer()

@@ -59,7 +59,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Aspire Project", nullptr));
-        LableCanvas->setText(QString());
     } // retranslateUi
 
 };
