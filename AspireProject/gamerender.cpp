@@ -34,7 +34,10 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
 {
     //resources = ResourceManager::CreateManager();
     QPainter p;
+    QPainter r;
     QPixmap rotatePixmap(40, 40);
+    rotatePixmap.fill(Qt::transparent);
+
     p.begin(&canvas);
     canvas.fill(Qt::white);
     for (int layer = -1; layer <= 1; layer++) // background/middle/foreground layer
@@ -50,18 +53,42 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                     case -1: //bottom layer // parallax < 1
                         if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
                         {
-                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x+5,
-                                         resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y+5,
+                            if (resources->GetWorldMap()[tile].getProperties().rotation)
+                            {
+                                r.begin(&rotatePixmap);
+                                r.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
+                                r.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
+                                r.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
+                                r.drawPixmap(0,0,resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()));
+                                r.end();
+                                p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x,
+                                             resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y,
+                                             rotatePixmap );
+                            }
+                            else
+                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x+5,
+                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y+5,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );
                         }
                         break;
                     case 0: //mid layer // parallax = 1
                         if (resources->GetWorldMap()[tile].getPos().layer == layer && resources->GetWorldMap()[tile].getPos().z == sublayer)
                         {                          
-
-
-                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x,
-                                         resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y,
+                            if (resources->GetWorldMap()[tile].getProperties().rotation)
+                            {
+                                r.begin(&rotatePixmap);
+                                r.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
+                                r.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
+                                r.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
+                                r.drawPixmap(0,0,resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()));
+                                r.end();
+                                p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x,
+                                             resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y,
+                                             rotatePixmap );
+                            }
+                            else
+                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x,
+                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );
                         }
                         break;
@@ -70,32 +97,27 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                         {
                             if (resources->GetWorldMap()[tile].getProperties().rotation)
                             {
-                                rotatePixmap = QPixmap(resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()));
-                                //p.rotate(45);
-                                p.begin(&rotatePixmap);
-                                //p.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
-                                //p.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
-                                //p.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
-                                p.begin(&canvas);
-                                p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x,
-                                             resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y,
+                                r.begin(&rotatePixmap);
+                                r.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
+                                r.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
+                                r.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
+                                r.drawPixmap(0,0,resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()));
+                                r.end();
+                                p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x,
+                                             resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y,
                                              rotatePixmap );
-
                             }
                             else
-                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize + cPos.x-5,
-                                         resources->GetWorldMap()[tile].getPos().y * tileSize + cPos.y-5,
+                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x-5,
+                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y-5,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );
                         }
                         break;
-
                     }
                 }
             }
         }
-    }//*/
-    //p.drawPixmap(canvas.width()/2, canvas.height()/2, resources->GetSprite(0, resources->TilesStorage()));
-
+    }
     p.end();
 }
 

@@ -8,6 +8,7 @@
 #include <QKeyEvent>
 #include "resourcemanager.h"
 #include "gamerender.h"
+#include "player.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -25,6 +26,9 @@ public:
 private slots:
     void on_Timer();
 
+    void onKeyPress(QKeyEvent*ev);
+    void onKeyRelease(QKeyEvent*ev);
+
 private:
     void keyPressEvent(QKeyEvent *ev);
     void keyReleaseEvent(QKeyEvent *ev);
@@ -32,6 +36,7 @@ private:
     QTimer *timer;
     ResourceManager *resourceManager;
     GameRender *gameRender;
+    Player *player;
 
 };
 #endif // MAINWINDOW_H

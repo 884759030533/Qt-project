@@ -18,7 +18,7 @@ ResourceManager::ResourceManager()
     map[1048] = Tile(tPosition(4, 20, 0),tSize(40, 40), 1, tProperties(true));
     map[1049] = Tile(tPosition(4, 21, 0),tSize(40, 40), 1, tProperties(true));
     map[1050] = Tile(tPosition(5, 20, 0),tSize(40, 40), 1, tProperties(true));
-    map[1051] = Tile(tPosition(5, 21, 1, 1),tSize(40, 40), 12, tProperties(true, true, 1));
+    map[1051] = Tile(tPosition(5, 21, 1, 1),tSize(40, 40), 12, tProperties(true, true, 3));
     map[1052] = Tile(tPosition(5, 21, -2, 0),tSize(40, 40), 2, tProperties(true));
 
     //Tile tempTile(tPosition(0,0,0,0),tSize(0,0),1,tProperties());

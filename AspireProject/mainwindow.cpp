@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+QRect lableCoord;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,9 +13,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, &QTimer::timeout, this, &MainWindow::on_Timer);
     timer->start(1000/60);
 
+    connect(ui->LableCanvas,SIGNAL(KeyPress(QKeyEvent*)),this,SLOT(onKeyPress(QKeyEvent*)));
+    connect(ui->LableCanvas,SIGNAL(KeyRelease(QKeyEvent*)),this,SLOT(onKeyRelease(QKeyEvent*)));
+
+    lableCoord = ui->LableCanvas->geometry();
+
     resourceManager = ResourceManager::CreateManager(); // singletone!
     gameRender = GameRender::CreateGameRender();
 
+    player = new Player(pPosition(100, 300));
+
+    gameRender->MoveCamera(100,300);
     //for (int l = 0; l<2; l++) gameRender->cMoveState = CamMoveState(!l,!l,!l,!l);
 }
 
@@ -21,6 +31,7 @@ MainWindow::~MainWindow()
 {
     ResourceManager::DeleteManager();
     GameRender::DeleteGameRender();
+    delete player;
     delete ui;
 
 }
@@ -28,17 +39,20 @@ void MainWindow::keyReleaseEvent(QKeyEvent *ev)
 {
     switch (ev->key())
     {
-    case Qt::Key_A:
+    case Qt::Key_A :
         gameRender->cMoveState.moveLeft = false;
+        player->State.moveLeft = false;
         break;
     case Qt::Key_D:
         gameRender->cMoveState.moveRight = false;
+        player->State.moveRight = false;
         break;
-    case Qt::Key_W :
+    case Qt::Key_W:
         gameRender->cMoveState.moveUp = false;
         break;
-    case Qt::Key_S :
+    case Qt::Key_S:
         gameRender->cMoveState.moveDown = false;
+        player->State.isCrouch = false;
         break;
     }
 
@@ -50,21 +64,76 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
     {
     case Qt::Key_A:
         gameRender->cMoveState.moveLeft = true;
+        player->State.moveLeft = true;
         break;
-    case Qt::Key_D :
+    case Qt::Key_D:
         gameRender->cMoveState.moveRight = true;
+        player->State.moveRight = true;
         break;
-    case Qt::Key_W :
+    case Qt::Key_W:
         gameRender->cMoveState.moveUp = true;
+        //player->Jump();
         break;
-    case Qt::Key_S :
+    case Qt::Key_S:
         gameRender->cMoveState.moveDown = true;
+        player->State.isCrouch = true;
+        break;
+    case Qt::Key_Space:
+        //player->Jump();
         break;
     case Qt::Key_Escape:
         close();
     }
 
 }
+
+void MainWindow::onKeyPress(QKeyEvent *ev)
+{
+    switch (ev->key())
+    {
+    case Qt::Key_A:
+        gameRender->cMoveState.moveLeft = true;
+        player->State.moveLeft = true;
+        break;
+    case Qt::Key_D:
+        gameRender->cMoveState.moveRight = true;
+        player->State.moveRight = true;
+        break;
+    case Qt::Key_W:
+        gameRender->cMoveState.moveUp = true;
+        player->Jump();
+        break;
+    case Qt::Key_S:
+        gameRender->cMoveState.moveDown = true;
+        player->State.isCrouch = true;
+        break;
+    case Qt::Key_Escape:
+        close();
+    }
+}
+
+void MainWindow::onKeyRelease(QKeyEvent *ev)
+{
+    switch (ev->key())
+    {
+    case Qt::Key_A:
+        gameRender->cMoveState.moveLeft = false;
+        player->State.moveLeft = false;
+        break;
+    case Qt::Key_D:
+        gameRender->cMoveState.moveRight = false;
+        player->State.moveRight = false;
+        break;
+    case Qt::Key_W:
+        gameRender->cMoveState.moveUp = false;
+        break;
+    case Qt::Key_S:
+        gameRender->cMoveState.moveDown = false;
+        player->State.isCrouch = false;
+        break;
+    }
+}
+
 void CamMove(GameRender *&Camera)
 {
     if (Camera->cMoveState.moveLeft) Camera->MoveCamera(Camera->GetCamPos().x+10, Camera->GetCamPos().y);
@@ -72,15 +141,55 @@ void CamMove(GameRender *&Camera)
     if (Camera->cMoveState.moveUp) Camera->MoveCamera(Camera->GetCamPos().x, Camera->GetCamPos().y+10);
     if (Camera->cMoveState.moveDown) Camera->MoveCamera(Camera->GetCamPos().x, Camera->GetCamPos().y-10);
 }
+void PlayerCamMove(GameRender *&Camera, Player *&player)
+{
+    if (Camera->cMoveState.moveLeft || Camera->cMoveState.moveRight)
+        Camera->MoveCamera(player->getPos().x - lableCoord.width()/2, Camera->GetCamPos().y);
+    if (Camera->cMoveState.moveUp)
+        Camera->MoveCamera(Camera->GetCamPos().x - lableCoord.width()/2, Camera->GetCamPos().y-10);
+    if (Camera->cMoveState.moveDown)
+        Camera->MoveCamera(Camera->GetCamPos().x - lableCoord.width()/2, Camera->GetCamPos().y+10);
+    else
+        Camera->MoveCamera(player->getPos().x - lableCoord.width()/2, Camera->GetCamPos().y);
+}
 
 void MainWindow::on_Timer()
 {
+    lableCoord = ui->LableCanvas->geometry();
     QPixmap canvas(ui->LableCanvas->geometry().size());
+    QPainter p;
 
 
-
-    CamMove(gameRender);
+    player->Move();
+    //CamMove(gameRender);
+    PlayerCamMove(gameRender, player);
     gameRender->ScreenUpdate(canvas);
+    p.begin(&canvas);
+
+    p.drawRect(player->getPos().x - player->getWidth()/2 - gameRender->GetCamPos().x,
+               player->getPos().y + player->getHeight() - gameRender->GetCamPos().y,
+               player->getWidth(), player->getHeight() );
+    p.end();
+
+   ////debug
 
     ui->LableCanvas->setPixmap(canvas);
+    ui->debugLabel1->setText(QString("Camera Position ") + QString::number(gameRender->GetCamPos().x) +
+                             " " + QString::number(gameRender->GetCamPos().y));
+    ui->debugLabel2->setText(QString("Player Position ") + QString::number(player->getPos().x) +
+                             " " + QString::number(player->getPos().y) + " velocity " + QString::number(player->getVelocity()));
+    ui->label->setText(QString("Camera States ") +
+                       QString::number(gameRender->cMoveState.moveUp) +
+                       QString::number(gameRender->cMoveState.moveDown) +
+                       QString::number(gameRender->cMoveState.moveLeft) +
+                       QString::number(gameRender->cMoveState.moveRight) );
+    ui->label_2->setText(QString("Player States ") +
+                       QString::number(player->State.moveLeft) +
+                       QString::number(player->State.moveRight) + "onGR - " +
+                       QString::number(player->State.onGround) +
+                       QString::number(player->State.isCrouch) );
+
+
 }
+
+

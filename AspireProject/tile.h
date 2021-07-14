@@ -19,10 +19,10 @@ struct tPosition //tile position in grid
 };
 struct tSize //size of a tile (for proper texture positioning)
 {
-    unsigned int height;
-    unsigned int width;
+    int height;
+    int width;
     tSize(): height(40), width(40) {};
-    tSize(unsigned int Height, unsigned int Width): height(Height), width(Width) {};
+    tSize(int Height, int Width): height(Height), width(Width) {};
 };
 struct tProperties
 {

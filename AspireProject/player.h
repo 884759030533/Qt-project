@@ -2,6 +2,9 @@
 #define PLAYER_H
 
 #include <string>
+#include <vector>
+#include "tile.h"
+#include "resourcemanager.h"
 
 struct pPosition
 {
@@ -17,8 +20,9 @@ struct pMoveState
     bool onGround;
     bool isSprint;
     bool isCrouch;
+    bool canMove;
     /* ... */
-    pMoveState() : moveLeft(false), moveRight(false), onGround(true), isSprint(false), isCrouch(false) {};
+    pMoveState() : moveLeft(false), moveRight(false), onGround(true), isSprint(false), isCrouch(false), canMove(true) {};
 };
 struct pSpriteList
 {
@@ -36,21 +40,36 @@ class Player
 {
 private:
     pPosition pos;
-    double velocity;
+    double velocityH;
+    //double velocityV;
     int maxHealth; //player's max health
     int health; //current player's health
     int height; //height of player's hitbox in pixels
     int width; //width of player's hitbox in pixels
     //int baseMeleeDamage;
-    pMoveState State;
     pSpriteList sprite; //player sprite list
+
+    ResourceManager *manager;
+    std::vector<Tile> *map;
 
 
 public:
-    Player(pPosition pos, int maxHealth, int height = 120, int width = 40);
-    void Draw();
+    Player(pPosition pos, int maxHealth = 1000, int height = 70, int width = 30);
+    //void Draw();
     void Move();
     void Jump();
+    pPosition getPos() { return pos; }
+    int getHeight() { return height; }
+    int getWidth() { return width; }
+
+    void increaseVelocity();
+    void decreaseVelocity();
+    void increaseVelocityLeft();
+    void increaseVelocityRight();
+    void decreaseVelocityToZero();
+    double getVelocityHorizontal() { return velocityH; }
+    pMoveState getMoveState() { return State; }
+    pMoveState State;
 
 };
 

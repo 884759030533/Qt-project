@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QMovie>
 #include "resourcemanager.h"
+#include "player.h"
 
 struct CamPosition
 {
