@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <math.h>
 #include "tile.h"
 #include "resourcemanager.h"
 
@@ -18,11 +19,16 @@ struct pMoveState
     bool moveLeft;
     bool moveRight;
     bool onGround;
+    bool canJump;
+    bool moveUp;
+    bool moveDown;
     bool isSprint;
     bool isCrouch;
     bool canMove;
     /* ... */
-    pMoveState() : moveLeft(false), moveRight(false), onGround(true), isSprint(false), isCrouch(false), canMove(true) {};
+    pMoveState() : moveLeft(false), moveRight(false), onGround(true),
+                   canJump(true), moveUp(false), moveDown(false), isSprint(false),
+                   isCrouch(false), canMove(true) {};
 };
 struct pSpriteList
 {
@@ -41,7 +47,7 @@ class Player
 private:
     pPosition pos;
     double velocityH;
-    //double velocityV;
+    double velocityV;
     int maxHealth; //player's max health
     int health; //current player's health
     int height; //height of player's hitbox in pixels
@@ -66,10 +72,14 @@ public:
     void decreaseVelocity();
     void increaseVelocityLeft();
     void increaseVelocityRight();
-    void decreaseVelocityToZero();
+    void decreaseVelocityHorizontalToZero();
+    void decreaseVelocityUp();
+    void increaseVelocityDown();
+    void decreaseVelocityVerticalToZero();
     double getVelocityHorizontal() { return velocityH; }
-    pMoveState getMoveState() { return State; }
-    pMoveState State;
+    double getVelocityVertical() { return velocityV; }
+    pMoveState getMoveState() { return state; }
+    pMoveState state;
 
 };
 

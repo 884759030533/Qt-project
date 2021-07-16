@@ -1,19 +1,24 @@
 #include "player.h"
 
 double velocityHorizontalIncrease = 1.15;
-double velocityWalkUpLim = 10.0;
+double velocityVerticalIncrease = 1.20;
+double velocityWalkLim = 10.0;
+double velocityFallLim = 30.0;
+
+int checkboxRadius = 240;
+//Tile tempTile;
 
 
 Player::Player(pPosition pos, int maxHealth, int height, int width)
 {
     this->pos = pos;
     this->velocityH = 0.0;
-    //this->velocityV = 0.0;
+    this->velocityV = 0.0;
     this->maxHealth = maxHealth;
     this->health = maxHealth;
     this->height = height;
     this->width = width;
-    this->State = pMoveState();
+    this->state = pMoveState();
 
     manager = ResourceManager::CreateManager();
     map = &manager->GetWorldMap();
@@ -21,46 +26,221 @@ Player::Player(pPosition pos, int maxHealth, int height, int width)
 
 void Player::Move()
 {
-
-
-    //int i = 0;
+    long currentTileX = 0;
+    long currentTileY = 0;
+    // take each tile
     for (unsigned long long tile = 0; tile < manager->GetWorldMap().size(); tile++)
     {
-        if (manager->GetWorldMap()[tile].getProperties().solid)
+        currentTileX = manager->GetWorldMap()[tile].getPos().x * 40;
+        currentTileY = manager->GetWorldMap()[tile].getPos().y * 40;
+
+        // is current tile in check square distance from player
+        if ((currentTileX - pos.x < checkboxRadius) && (currentTileY - pos.y < checkboxRadius))
         {
-            if (pos.y >= manager->GetWorldMap()[tile].getPos().y*40)
+            // is current tile is solid
+            if (manager->GetWorldMap()[tile].getProperties().solid)
             {
-                //pos.y += 1;
+                // is current tile is under the player
+                if (pos.x - currentTileX < manager->GetWorldMap()[tile].getSize().width)
+                {
+                    // is player above current tile
+                    if (pos.y >= currentTileY)
+                    {
+                        // if player gonna go through tile
+                        if (pos.y + velocityV > currentTileY)
+                        {
+                            /// player touch the ground
+                            state.moveDown = false;
+                            state.onGround = true;
+                            state.canJump = true;
+                            //pos.y = currentTileY;
+                            velocityV = 0.0;
+                        }
+
+                        // is height from player to tile less than tile height
+                        if (pos.y - currentTileY < manager->GetWorldMap()[tile].getSize().height)
+                        {
+                            // is player falling
+                            if (state.moveDown)
+                            {
+
+                            }
+                        }
+                    }
+//                    else if (pos.y - height < currentTileY + manager->GetWorldMap()[tile].getSize().height)
+//                    {
+
+//                    }
+
+//                    else if ((pos.y - height > currentTileY + manager->GetWorldMap()[tile].getSize().height) || pos.y < currentTileY)
+//                    {
+//                        if (pos.x + width/2 + velocityH > currentTileX)
+//                        {
+//                            state.moveRight = false;
+//                            velocityH = 0.0;
+//                            //pos.x = currentTileX - width/2;
+//                        }
+//                        else if (pos.x - width/2 + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+//                        {
+//                            state.moveLeft = false;
+//                            velocityH = 0.0;
+//                            //pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+//                        }
+//                        else
+//                        {
+//                        }
+//                    }
+
+//                    if (pos.x + width/2 < currentTileX + velocityH || pos.x - width/2 + velocityH > currentTileX + manager->GetWorldMap()[tile].getSize().width)
+//                    {
+
+//                    }
+
+
+
+                }
+                // is current tile on the same height as player
+                if (pos.y > currentTileY && pos.y < currentTileY + manager->GetWorldMap()[tile].getSize().height)
+                {
+                    if (pos.x + velocityH > currentTileX)
+                    {
+                        state.moveRight = false;
+                        velocityH = 0.0;
+                        pos.x = currentTileX - width/2;
+                    }
+                    if (pos.x + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+                    {
+                        state.moveLeft = false;
+                        velocityH = 0.0;
+                        pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+                    }
+                }
+//                if (pos.y - currentTileY < manager->GetWorldMap()[tile].getSize().height)
+//                {
+//                    if (pos.x + velocityH > currentTileX)
+//                    {
+//                        state.moveRight = false;
+//                        velocityH = 0.0;
+//                        //pos.x = currentTileX - width/2;
+//                    }
+//                    if (pos.x + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+//                    {
+//                        state.moveLeft = false;
+//                        velocityH = 0.0;
+//                        //pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+//                    }
+//                }
+
+
+                ////// ========================
+//                if (pos.y < currentTileY)
+//                {
+//                    if (pos.x + width/2 + velocityH > currentTileX)
+//                    {
+//                        state.moveRight = false;
+//                        velocityH = 0.0;
+//                        //pos.x = currentTileX - width/2;
+//                    }
+//                    else if (pos.x - width/2 + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+//                    {
+//                        state.moveLeft = false;
+//                        velocityH = 0.0;
+//                        //pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+//                    }
+//                    else
+//                    {
+//                    }
+//                }
+
+
+//                if (pos.y >= manager->GetWorldMap()[tile].getPos().y*40)
+//                {
+//                    state.onGround = false;
+//                }
+//                else if (pos.y <= manager->GetWorldMap()[tile].getPos().y*40 + manager->GetWorldMap()[tile].getSize().height)
+//                {
+//                    state.moveUp = false;
+//                }
+//                else
+//                {
+//                    if (!state.onGround)
+//                    {
+//                        state.onGround = true;
+//                        pos.y = manager->GetWorldMap()[tile].getPos().y;
+//                        velocityV = 0.0;
+//                    }
+//                    state.onGround = true;
+//                }
+//                // if hit wall to the left
+//                if ((pos.x - width/2) + velocityH < manager->GetWorldMap()[tile].getPos().x*40 + manager->GetWorldMap()[tile].getSize().width)
+//                {
+//                    //state.moveLeft = false;
+//                }
+//                // if hit the wall to the right
+//                if ((pos.x + width/2) + velocityH > manager->GetWorldMap()[tile].getPos().x*40)
+//                {
+//                    //state.moveRight = false;
+//                }
+//                if (pos.y <= manager->GetWorldMap()[tile].getPos().y*40)
+//                {
+//                    //state.onGround = false;
+//                }
             }
-            else
-            {
-                //pos.y = manager->GetWorldMap()[tile].getPos().y;
-                State.onGround = true;
-            }
-            // if hit wall to the left
-            if ((pos.x - width/2) + velocityH < manager->GetWorldMap()[tile].getPos().x*40 + manager->GetWorldMap()[tile].getSize().width)
-            {
-                //State.moveLeft = false;
-            }
-            // if hit the wall to the right
-            if ((pos.x + width/2) + velocityH > manager->GetWorldMap()[tile].getPos().x*40)
-            {
-                //State.moveRight = false;
-            }
-            if (State.onGround && pos.y <= manager->GetWorldMap()[tile].getPos().y*40)
-            {
-                State.onGround = false;
-            }
+//            if ((pos.y - height > currentTileY + manager->GetWorldMap()[tile].getSize().height) || pos.y < currentTileY)
+//            {
+//                if (pos.x + width/2 + velocityH > currentTileX)
+//                {
+//                    state.moveRight = false;
+//                    velocityH = 0.0;
+//                    //pos.x = currentTileX - width/2;
+//                }
+//                else if (pos.x - width/2 + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+//                {
+//                    state.moveLeft = false;
+//                    velocityH = 0.0;
+//                    //pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+//                }
+//                else
+//                {
+//                }
+//            }
         }
     }
-
-    if (State.moveLeft || State.moveRight)
+    //// Jump state
+    if (!state.onGround)
     {
-        if (State.moveRight)
+        if (state.moveUp || state.moveDown)
+        {
+            if (state.moveUp)
+            {
+                decreaseVelocityUp();
+            }
+            else if (state.moveDown)
+            {
+                increaseVelocityDown();
+            }
+            pos.y += velocityV;
+        }
+        else
+        {
+            pos.y += velocityV;
+            //decreaseVelocityHorizontalToZero();
+        }
+    }
+    else
+    {
+        state.moveDown = false;
+        velocityV = 0.0;
+    }
+
+    //// Walking state
+    if (state.moveLeft || state.moveRight)
+    {
+        if (state.moveRight)
         {
             increaseVelocityRight();
         }
-        else if (State.moveLeft)
+        else if (state.moveLeft)
         {
             increaseVelocityLeft();
         }
@@ -69,90 +249,23 @@ void Player::Move()
     else
     {
         pos.x += velocityH;
-        decreaseVelocityToZero();
+        decreaseVelocityHorizontalToZero();
     }
-
-
-
-
-//    if (!State.onGround)
-//    {
-//        pos.y -= 10;
-//    }
-
-
-
-//        for (unsigned long long tile = 0; tile < manager->GetWorldMap().size(); tile++)
-//        {
-//            if (manager->GetWorldMap()[tile].getProperties().solid)
-//            {
-//                if (pos.y >= manager->GetWorldMap()[tile].getPos().y)
-//                {
-//                    if ((pos.x + width/2) + velocity < manager->GetWorldMap()[tile].getPos().x)
-//                    {
-//                        pos.x += velocity;
-//                    }
-//                    else
-//                    {
-//                        pos.x = manager->GetWorldMap()[tile].getPos().x;
-//                        State.moveRight = false;
-//                    }
-//                    if ((pos.x - width/2) - velocity > manager->GetWorldMap()[tile].getPos().x + manager->GetWorldMap()[tile].getSize().width)
-//                    {
-//                        pos.x -= velocity;
-//                    }
-//                    else
-//                    {
-//                        pos.x = manager->GetWorldMap()[tile].getPos().x;
-//                        State.moveLeft = false;
-//                    }
-
-//                }
-//                if ((pos.y - height < pos.y) >= manager->GetWorldMap()[tile].getPos().y - manager->GetWorldMap()[tile].getSize().height)
-//                {
-
-//                }
-
-//            }
-//        }
-
-
-
-
 }
 
 void Player::Jump()
 {
-//    if (pos.y >= manager->GetWorldMap()[tile].getPos().y)
-//    {
-
-//    }
-//    if (pos.y - height < pos.y >= manager->GetWorldMap()[tile].getPos().y - manager->GetWorldMap()[tile].getSize().height)
-//    {
-
-//    }
+    velocityV = -40.0;
+    state.onGround = false;
+    state.moveUp = true;
+    state.canJump = false;
 
 }
 
-void Player::increaseVelocity()
-{
-    if (velocityH < 1) velocityH = 2.5;
-    if (velocityH < 20.0)
-    {
-        velocityH = velocityH * velocityHorizontalIncrease;
-    }
-}
-
-void Player::decreaseVelocity()
-{
-    if (velocityH < 1) velocityH = 0.0;
-    else velocityH /= velocityHorizontalIncrease;
-}
-////==========================
 void Player::increaseVelocityLeft()
 {
     if (velocityH > -1) velocityH = -1.5;
-    else if (velocityH > -velocityWalkUpLim)
+    else if (velocityH > -velocityWalkLim)
     {
         velocityH = velocityH * velocityHorizontalIncrease;
     }
@@ -160,14 +273,36 @@ void Player::increaseVelocityLeft()
 void Player::increaseVelocityRight()
 {
     if (velocityH < 1) velocityH = 1.5;
-    else if (velocityH < velocityWalkUpLim)
+    else if (velocityH < velocityWalkLim)
     {
         velocityH = velocityH * velocityHorizontalIncrease;
     }
 }
-void Player::decreaseVelocityToZero()
+void Player::decreaseVelocityHorizontalToZero()
 {
-    if (velocityH*velocityH > 0.125) velocityH /= velocityHorizontalIncrease+0.05;
+    if (velocityH*velocityH > 0.25) velocityH /= velocityHorizontalIncrease + 0.05;
     else velocityH = 0;
+}
+////==========================
+void Player::decreaseVelocityUp()
+{
+    if (velocityV*velocityV > 1.3)
+    {
+        velocityV /= velocityVerticalIncrease;
+    }
+    else
+    {
+        velocityV = 0;
+        state.moveUp = false;
+        state.moveDown = true;
+    }
+}
+void Player::increaseVelocityDown()
+{
+    if (velocityV < 1) velocityV = 1.3;
+    if (velocityV < velocityFallLim)
+    {
+        velocityV = velocityV * velocityVerticalIncrease-0.09;
+    }
 }
 

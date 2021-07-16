@@ -24,6 +24,7 @@
         <file>Textures/tiles/z_missing_texture.png</file>
         <file>Textures/tiles/z_no_texture.bmp</file>
         <file>Textures/tiles/z_oh_no_green.png</file>
+        <file>Textures/templates/player_idle.gif</file>
     </qresource>
     <qresource prefix="/Icons">
         <file>Textures/icons/small_logo.ico</file>

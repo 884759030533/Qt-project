@@ -12,10 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,13 +22,11 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QVBoxLayout *verticalLayout;
     QLabel *LableCanvas;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label;
     QLabel *debugLabel2;
     QLabel *label_2;
     QLabel *debugLabel1;
+    QLabel *label;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -44,40 +40,23 @@ public:
         MainWindow->setIconSize(QSize(128, 128));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        verticalLayout = new QVBoxLayout(centralwidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         LableCanvas = new QLabel(centralwidget);
         LableCanvas->setObjectName(QString::fromUtf8("LableCanvas"));
+        LableCanvas->setGeometry(QRect(0, 0, 881, 601));
         LableCanvas->setPixmap(QPixmap(QString::fromUtf8(":/Tiles/Textures/tiles/z_missing_texture.png")));
         LableCanvas->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(LableCanvas);
-
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        horizontalLayout->addWidget(label);
-
         debugLabel2 = new QLabel(centralwidget);
         debugLabel2->setObjectName(QString::fromUtf8("debugLabel2"));
-
-        horizontalLayout->addWidget(debugLabel2);
-
+        debugLabel2->setGeometry(QRect(660, 65, 431, 21));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-
-        horizontalLayout->addWidget(label_2);
-
+        label_2->setGeometry(QRect(660, 35, 431, 21));
         debugLabel1 = new QLabel(centralwidget);
         debugLabel1->setObjectName(QString::fromUtf8("debugLabel1"));
-
-        horizontalLayout->addWidget(debugLabel1);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
+        debugLabel1->setGeometry(QRect(660, 10, 431, 21));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(660, 95, 431, 21));
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -88,10 +67,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Aspire Project", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         debugLabel2->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         debugLabel1->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

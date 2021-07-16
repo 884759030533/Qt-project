@@ -10,16 +10,26 @@ ResourceManager::ResourceManager()
 
     /* Loading map from file to memory */
     //for (int i =0; i<10; i++) for (int j =0; j<10; j++) map[i+j*10] = Tile(tPosition(i, j, 1),tSize(40, 40), 1);
-    for (int i = 0; i<40; i++) map[i+1000] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true));
+    for (int i = 0; i<40; i++) map[i+1000] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true, true));
 
-    map[1045] = Tile(tPosition(2, 18, 0),tSize(40, 40), 1, tProperties(true));
-    map[1046] = Tile(tPosition(5, 18, 0),tSize(40, 40), 1, tProperties(true));
-    map[1047] = Tile(tPosition(3, 20, 0),tSize(40, 40), 1, tProperties(true));
-    map[1048] = Tile(tPosition(4, 20, 0),tSize(40, 40), 1, tProperties(true));
-    map[1049] = Tile(tPosition(4, 21, 0),tSize(40, 40), 1, tProperties(true));
-    map[1050] = Tile(tPosition(5, 20, 0),tSize(40, 40), 1, tProperties(true));
+    map[1045] = Tile(tPosition(2, 18, 0),tSize(40, 40), 1, tProperties(true, true));
+    map[1046] = Tile(tPosition(5, 18, 0),tSize(40, 40), 1, tProperties(true, true));
+    map[1047] = Tile(tPosition(3, 20, 0),tSize(40, 40), 1, tProperties(true, true));
+    map[1048] = Tile(tPosition(4, 20, 0),tSize(40, 40), 1, tProperties(true, true));
+    map[1049] = Tile(tPosition(4, 21, 0),tSize(40, 40), 1, tProperties(true, true));
+    map[1050] = Tile(tPosition(5, 20, 0),tSize(40, 40), 1, tProperties(true, true));
     map[1051] = Tile(tPosition(5, 21, 1, 1),tSize(40, 40), 12, tProperties(true, true, 3));
-    map[1052] = Tile(tPosition(5, 21, -2, 0),tSize(40, 40), 2, tProperties(true));
+    map[1052] = Tile(tPosition(5, 21, -2, 0),tSize(40, 40), 2, tProperties(true, true));
+
+    map[1100] = Tile(tPosition(4, 15, 0),tSize(40, 40), 3, tProperties(true, true));
+    map[1101] = Tile(tPosition(4, 15, 0),tSize(40, 40), 11, tProperties(true, true));
+    map[1102] = Tile(tPosition(16, 15, 0),tSize(40, 40), 5, tProperties(true, true));
+    map[1103] = Tile(tPosition(16, 15, 1),tSize(40, 40), 17, tProperties(true, true));
+    map[1104] = Tile(tPosition(16, 15, 2),tSize(40, 40), 7, tProperties(true, true, 3));
+    map[1105] = Tile(tPosition(16, 14, 0),tSize(40, 40), 3, tProperties(true, true));
+    map[1106] = Tile(tPosition(16, 14, 2),tSize(40, 40), 11, tProperties(true, true, 3));
+
+
 
     //Tile tempTile(tPosition(0,0,0,0),tSize(0,0),1,tProperties());
 
