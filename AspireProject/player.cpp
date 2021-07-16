@@ -35,8 +35,8 @@ void Player::Move()
         currentTileY = manager->GetWorldMap()[tile].getPos().y * 40;
 
         // is current tile in check square distance from player
-        if ((currentTileX - pos.x < checkboxRadius) && (currentTileY - pos.y < checkboxRadius))
-        {
+//        if ((currentTileX - pos.x < checkboxRadius) && (currentTileY - pos.y < checkboxRadius))
+//        {
             // is current tile is solid
             if (manager->GetWorldMap()[tile].getProperties().solid)
             {
@@ -44,75 +44,74 @@ void Player::Move()
                 if (pos.x - currentTileX < manager->GetWorldMap()[tile].getSize().width)
                 {
                     // is player above current tile
-                    if (pos.y >= currentTileY)
+                    if (pos.y <= currentTileY)
                     {
-                        // if player gonna go through tile
-                        if (pos.y + velocityV > currentTileY)
-                        {
-                            /// player touch the ground
-                            state.moveDown = false;
-                            state.onGround = true;
-                            state.canJump = true;
-                            //pos.y = currentTileY;
-                            velocityV = 0.0;
-                        }
-
                         // is height from player to tile less than tile height
                         if (pos.y - currentTileY < manager->GetWorldMap()[tile].getSize().height)
                         {
-                            // is player falling
-                            if (state.moveDown)
+                            // if player far enough to fall through
+//                            if (pos.y <= currentTileY)
+//                            {
+//                                /// player fall of tile
+//                                state.moveDown = true;
+//                                state.onGround = false;
+//                                state.canJump = false;
+//                                //pos.y = currentTileY;
+//                                //velocityV = 0.0;
+//                            }
+                            // if player gonna go through tile
+                            if (pos.y + velocityV > currentTileY)
                             {
-
+                                if (state.moveDown && !state.onGround)
+                                {
+                                    /// player touch the ground
+                                    state.moveDown = false;
+                                    state.onGround = true;
+                                    state.canJump = true;
+                                    pos.y = currentTileY;
+                                    velocityV = 0.0;
+                                }
                             }
+                            // if player far enough to fall through
+                            else if (pos.y <= currentTileY)
+                            {
+                                if (state.onGround && !state.moveDown)
+                                {
+                                    /// player fall of tile
+                                    state.moveDown = true;
+                                    state.onGround = false;
+                                    state.canJump = false;
+                                    //pos.y = currentTileY;
+                                    //velocityV = 0.0;
+                                }
+                            }
+
                         }
                     }
-//                    else if (pos.y - height < currentTileY + manager->GetWorldMap()[tile].getSize().height)
-//                    {
-
-//                    }
-
-//                    else if ((pos.y - height > currentTileY + manager->GetWorldMap()[tile].getSize().height) || pos.y < currentTileY)
-//                    {
-//                        if (pos.x + width/2 + velocityH > currentTileX)
-//                        {
-//                            state.moveRight = false;
-//                            velocityH = 0.0;
-//                            //pos.x = currentTileX - width/2;
-//                        }
-//                        else if (pos.x - width/2 + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
-//                        {
-//                            state.moveLeft = false;
-//                            velocityH = 0.0;
-//                            //pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
-//                        }
-//                        else
-//                        {
-//                        }
-//                    }
-
-//                    if (pos.x + width/2 < currentTileX + velocityH || pos.x - width/2 + velocityH > currentTileX + manager->GetWorldMap()[tile].getSize().width)
-//                    {
-
-//                    }
-
-
-
                 }
                 // is current tile on the same height as player
                 if (pos.y > currentTileY && pos.y < currentTileY + manager->GetWorldMap()[tile].getSize().height)
                 {
-                    if (pos.x + velocityH > currentTileX)
+                    // is width from player to tile less than tile width
+                    if (pos.x < currentTileX + manager->GetWorldMap()[tile].getSize().width)
                     {
-                        state.moveRight = false;
-                        velocityH = 0.0;
-                        pos.x = currentTileX - width/2;
+                        // if player gonna go through tile
+                        if (pos.x + velocityH > currentTileX)
+                        {
+                            /// player touch the tile wall
+                            state.moveRight = false;
+                            velocityH = 0.0;
+                            //pos.x = currentTileX - width/2;
+                        }
                     }
-                    if (pos.x + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+                    else if (pos.x > currentTileX)
                     {
-                        state.moveLeft = false;
-                        velocityH = 0.0;
-                        pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+                        if (pos.x + velocityH < currentTileX + manager->GetWorldMap()[tile].getSize().width)
+                        {
+                            state.moveLeft = false;
+                            velocityH = 0.0;
+                            //pos.x = currentTileX + width/2 + manager->GetWorldMap()[tile].getSize().width;
+                        }
                     }
                 }
 //                if (pos.y - currentTileY < manager->GetWorldMap()[tile].getSize().height)
@@ -204,7 +203,7 @@ void Player::Move()
 //                {
 //                }
 //            }
-        }
+//        }
     }
     //// Jump state
     if (!state.onGround)
@@ -229,6 +228,7 @@ void Player::Move()
     }
     else
     {
+        state.onGround = true;
         state.moveDown = false;
         velocityV = 0.0;
     }
@@ -255,7 +255,7 @@ void Player::Move()
 
 void Player::Jump()
 {
-    velocityV = -40.0;
+    velocityV = -20.0;
     state.onGround = false;
     state.moveUp = true;
     state.canJump = false;

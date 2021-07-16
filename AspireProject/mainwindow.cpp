@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::on_Timer);
-    timer->start(1000/60);
+    timer->start(1000/30);
 
     connect(ui->LableCanvas,SIGNAL(KeyPress(QKeyEvent*)),this,SLOT(onKeyPress(QKeyEvent*)));
     connect(ui->LableCanvas,SIGNAL(KeyRelease(QKeyEvent*)),this,SLOT(onKeyRelease(QKeyEvent*)));
@@ -63,12 +63,18 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
     switch (ev->key())
     {
     case Qt::Key_A:
-        gameRender->cMoveState.moveLeft = true;
-        player->state.moveLeft = true;
+        if (!player->state.moveLeft)
+        {
+            gameRender->cMoveState.moveLeft = true;
+            player->state.moveLeft = true;
+        }
         break;
     case Qt::Key_D:
-        gameRender->cMoveState.moveRight = true;
-        player->state.moveRight = true;
+        if (!player->state.moveRight)
+        {
+            gameRender->cMoveState.moveRight = true;
+            player->state.moveRight = true;
+        }
         break;
     case Qt::Key_W:
         gameRender->cMoveState.moveUp = true;

@@ -10,7 +10,7 @@ ResourceManager::ResourceManager()
 
     /* Loading map from file to memory */
     //for (int i =0; i<10; i++) for (int j =0; j<10; j++) map[i+j*10] = Tile(tPosition(i, j, 1),tSize(40, 40), 1);
-    for (int i = 0; i<40; i++) map[i+1000] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true, true));
+    for (int i = 0; i<40; i++) map[i] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true, true));
 
     map[1045] = Tile(tPosition(2, 18, 0),tSize(40, 40), 1, tProperties(true, true));
     map[1046] = Tile(tPosition(5, 18, 0),tSize(40, 40), 1, tProperties(true, true));
