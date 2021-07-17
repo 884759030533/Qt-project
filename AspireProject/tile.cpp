@@ -9,7 +9,7 @@ Tile::Tile(tPosition pos, tSize size, int ID)
     this->properties.damage = 0;
     this->properties.dealDamage = false;
     this->properties.isVisible = false;
-    this->properties.solid = true;
+    this->properties.solid = false;
 }
 
 Tile::Tile(tPosition pos, tSize size, int ID, tProperties properties)

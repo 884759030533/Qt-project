@@ -26,8 +26,8 @@ public:
 private slots:
     void on_Timer();
 
-    void onKeyPress(QKeyEvent*ev);
-    void onKeyRelease(QKeyEvent*ev);
+    //void onKeyPress(QKeyEvent*ev);
+    //void onKeyRelease(QKeyEvent*ev);
 
 private:
     void keyPressEvent(QKeyEvent *ev);

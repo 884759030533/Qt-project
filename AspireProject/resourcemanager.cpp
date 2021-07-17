@@ -4,13 +4,14 @@ ResourceManager* ResourceManager::RM = nullptr;
 
 ResourceManager::ResourceManager()
 {
+
     this->tiles.resize(256);
-    this->map.resize(2048);
+    this->map.resize(4096);
     /* Loading an entire library of sprites with a lots of code ... */
 
     /* Loading map from file to memory */
     //for (int i =0; i<10; i++) for (int j =0; j<10; j++) map[i+j*10] = Tile(tPosition(i, j, 1),tSize(40, 40), 1);
-    for (int i = 0; i<40; i++) map[i] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true, true));
+    for (int i = 0; i<25; i++) map[i+1000] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true, true));
 
     map[1045] = Tile(tPosition(2, 18, 0),tSize(40, 40), 1, tProperties(true, true));
     map[1046] = Tile(tPosition(5, 18, 0),tSize(40, 40), 1, tProperties(true, true));
@@ -22,12 +23,53 @@ ResourceManager::ResourceManager()
     map[1052] = Tile(tPosition(5, 21, -2, 0),tSize(40, 40), 2, tProperties(true, true));
 
     map[1100] = Tile(tPosition(4, 15, 0),tSize(40, 40), 3, tProperties(true, true));
-    map[1101] = Tile(tPosition(4, 15, 0),tSize(40, 40), 11, tProperties(true, true));
+    map[1101] = Tile(tPosition(4, 15, 0),tSize(40, 40), 11, tProperties(true, false));
     map[1102] = Tile(tPosition(16, 15, 0),tSize(40, 40), 5, tProperties(true, true));
-    map[1103] = Tile(tPosition(16, 15, 1),tSize(40, 40), 17, tProperties(true, true));
-    map[1104] = Tile(tPosition(16, 15, 2),tSize(40, 40), 7, tProperties(true, true, 3));
+    map[1103] = Tile(tPosition(16, 15, 1),tSize(40, 40), 17, tProperties(true, false));
+    map[1104] = Tile(tPosition(16, 15, 2),tSize(40, 40), 7, tProperties(true, false, 3));
     map[1105] = Tile(tPosition(16, 14, 0),tSize(40, 40), 3, tProperties(true, true));
-    map[1106] = Tile(tPosition(16, 14, 2),tSize(40, 40), 11, tProperties(true, true, 3));
+    map[1106] = Tile(tPosition(16, 14, 2),tSize(40, 40), 11, tProperties(true, false, 3));
+    map[1116] = Tile(tPosition(17, 13, 0),tSize(40, 40), 5, tProperties(true, true));
+    map[1117] = Tile(tPosition(17, 13, 2, 1),tSize(40, 40), 7, tProperties(true, false, 3));
+    map[1118] = Tile(tPosition(17, 12, 0),tSize(40, 40), 5, tProperties(true, true));
+    map[1119] = Tile(tPosition(17, 12, 2, 1),tSize(40, 40), 12, tProperties(true, false, 3));
+
+    //for (int i=0;i<1000;i++) map[i+1200] = Tile(tPosition(40+rand()%40, 40+rand()%40, -2+rand()%4, -1+rand()%3), tSize(40, 40), rand()%20, tProperties(true, rand()%2, rand()%3));
+
+    srand(time(NULL));
+    for (int i=0;i<40;i++) map[i] = Tile(tPosition(i+30, 30, 0),tSize(40, 40), 2, tProperties(true, false));
+    for (int i=0;i<40;i++) map[i+40] = Tile(tPosition(i+30, 31, 0),tSize(40, 40), 2, tProperties(true, false));
+    for (int i=0;i<40;i++) map[i+80] = Tile(tPosition(i+30, 32, 0),tSize(40, 40), 2, tProperties(true, false));
+    for (int i=0;i<40;i++) map[i+120] = Tile(tPosition(i+30, 33, 0),tSize(40, 40), 2, tProperties(true, false));
+    map[160] = Tile(tPosition(30, 30, 0),tSize(40, 40), 2, tProperties(true, false, 3));
+    for (int i=0;i<40;i++) map[i+161] = Tile(tPosition(i+30, 29, 1),tSize(40, 40), 19+rand()%2, tProperties(true, false));
+    for (int i=0;i<40;i++) map[i+201] = Tile(tPosition(i+30, 29, 0),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+241] = Tile(tPosition(i+30, 28, 0),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+281] = Tile(tPosition(i+30, 27, 0),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+321] = Tile(tPosition(i+30, 26, 1),tSize(40, 40), 17+rand()%2, tProperties(true, false));
+    for (int i=0;i<40;i++) map[i+361] = Tile(tPosition(i+30, 26, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+401] = Tile(tPosition(i+30, 25, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+441] = Tile(tPosition(i+30, 24, 0),tSize(40, 40), 3+rand()%4, tProperties(true, true, rand()%3));
+    for (int i=0;i<40;i++) map[i+481] = Tile(tPosition(i+30, 24, 1),tSize(40, 40), 7+rand()%2, tProperties(true, false));
+
+    for (int i=0;i<40;i++) map[i+521] = Tile(tPosition(i+30, 23, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+561] = Tile(tPosition(i+30, 22, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+601] = Tile(tPosition(i+30, 21, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+641] = Tile(tPosition(i+30, 20, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+681] = Tile(tPosition(i+30, 19, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+721] = Tile(tPosition(i+30, 18, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+761] = Tile(tPosition(i+30, 17, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+801] = Tile(tPosition(i+30, 16, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int i=0;i<40;i++) map[i+841] = Tile(tPosition(i+30, 15, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+
+    map[882] = Tile(tPosition(27, 18, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true));
+    map[883] = Tile(tPosition(30, 20, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true));
+    map[884] = Tile(tPosition(33, 22, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true));
+
+
+
+
+
 
 
 
@@ -73,7 +115,7 @@ ResourceManager::ResourceManager()
 //        qDebug() << tempTileProp.dealDamage;
 //        if (tempTileProp.dealDamage) file >> tempTileProp.damage;
 
-        map[levelTile] = Tile(tempTilePos, tempTileSize, ID, tempTileProp);
+        //map[levelTile] = Tile(tempTilePos, tempTileSize, ID, tempTileProp);
     }
 
     /* Sorting for better use */
@@ -158,7 +200,8 @@ void ResourceManager::AddSprite(int id, QPixmap &pixmap, std::vector<QPixmap> &s
 
 QPixmap ResourceManager::GetSprite(int id, std::vector<QPixmap> &storage)
 {
-    return storage[id];
+    if (storage[id].isNull()) return storage[1];
+    else return storage[id];
 }
 
 bool ResourceManager::IsExist(int id, std::vector<QPixmap> &storage)

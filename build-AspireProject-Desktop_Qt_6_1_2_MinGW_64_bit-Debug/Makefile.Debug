@@ -126,6 +126,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_resources.cpp
 debug/qrc_resources.cpp: ../AspireProject/resources.qrc \
 		../../../Qt/6.1.2/mingw81_64/bin/rcc.exe \
+		../AspireProject/Textures/BG/After\ a\ thousand\ years....png \
+		../AspireProject/Textures/BG/Space\ BG.png \
 		../AspireProject/Textures/templates/player_idle.gif \
 		../AspireProject/Textures/tiles/blackstone_transfer_1.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_2.png \
@@ -1039,14 +1041,7 @@ debug/mainwindow.o: ../AspireProject/mainwindow.cpp ../AspireProject/mainwindow.
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qpicture.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtGui/qtextdocument.h \
 		../AspireProject/player.h \
-		ui_mainwindow.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtCore/QVariant \
-		../../../Qt/6.1.2/mingw81_64/include/QtGui/QIcon \
-		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QApplication \
-		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qapplication.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtGui/qguiapplication.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtGui/qinputmethod.h \
-		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\AspireProject\mainwindow.cpp
 
 debug/player.o: ../AspireProject/player.cpp ../AspireProject/player.h \

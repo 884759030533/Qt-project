@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <QDebug>
+#include <time.h>
+#include <random>
 #include <QRandomGenerator>
 #include <QFile>
 #include "tile.h"

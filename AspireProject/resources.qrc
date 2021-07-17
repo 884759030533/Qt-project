@@ -33,4 +33,8 @@
     <qresource prefix="/Level Data">
         <file>Files/levels/testlevel.level</file>
     </qresource>
+    <qresource prefix="/Backgrounds">
+        <file>Textures/BG/After a thousand years....png</file>
+        <file>Textures/BG/Space BG.png</file>
+    </qresource>
 </RCC>

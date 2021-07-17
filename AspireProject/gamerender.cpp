@@ -39,7 +39,16 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
     rotatePixmap.fill(Qt::transparent);
 
     p.begin(&canvas);
-    canvas.fill(Qt::white);
+    canvas.fill(QColor(170,170,190));
+    double parallaxX = cPos.x/1.2;
+    double parallaxY = cPos.y/1.2;
+    //QPixmap background(":/Backgrounds/Textures/BG/After a thousand years....png");
+    //QPixmap background(":/Backgrounds/Textures/BG/Space BG.png");
+
+    //p.drawPixmap(-cPos.x + parallaxX, -cPos.y + parallaxY, background);
+
+
+
     for (int layer = -1; layer <= 1; layer++) // background/middle/foreground layer
     {
         for (int sublayer = -2; sublayer <= 2; sublayer++) //
@@ -66,8 +75,8 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                                              rotatePixmap );
                             }
                             else
-                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x+5,
-                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y+5,
+                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x,
+                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );
                         }
                         break;

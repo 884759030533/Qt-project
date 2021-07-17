@@ -5,6 +5,7 @@
 #include <vector>
 #include <math.h>
 #include "tile.h"
+#include "gamerender.h"
 #include "resourcemanager.h"
 
 struct pPosition
@@ -26,8 +27,8 @@ struct pMoveState
     bool isCrouch;
     bool canMove;
     /* ... */
-    pMoveState() : moveLeft(false), moveRight(false), onGround(true),
-                   canJump(true), moveUp(false), moveDown(false), isSprint(false),
+    pMoveState() : moveLeft(false), moveRight(false), onGround(false),
+                   canJump(true), moveUp(false), moveDown(true), isSprint(false),
                    isCrouch(false), canMove(true) {};
 };
 struct pSpriteList
@@ -60,9 +61,9 @@ private:
 
 
 public:
-    Player(pPosition pos, int maxHealth = 1000, int height = 70, int width = 30);
+    Player(pPosition pos, int maxHealth = 1000, int height = 70, int width = 26);
     //void Draw();
-    void Move();
+    void Move(QPixmap *canv);
     void Jump();
     pPosition getPos() { return pos; }
     int getHeight() { return height; }
