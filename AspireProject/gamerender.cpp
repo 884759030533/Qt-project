@@ -65,6 +65,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                             if (resources->GetWorldMap()[tile].getProperties().rotation)
                             {
                                 r.begin(&rotatePixmap);
+                                rotatePixmap.fill(Qt::transparent);
                                 r.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
                                 r.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
                                 r.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
@@ -86,6 +87,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                             if (resources->GetWorldMap()[tile].getProperties().rotation)
                             {
                                 r.begin(&rotatePixmap);
+                                rotatePixmap.fill(Qt::transparent);
                                 r.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
                                 r.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
                                 r.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
@@ -107,6 +109,7 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                             if (resources->GetWorldMap()[tile].getProperties().rotation)
                             {
                                 r.begin(&rotatePixmap);
+                                rotatePixmap.fill(Qt::transparent);
                                 r.translate(rotatePixmap.size().width() / 2, rotatePixmap.size().height() / 2);
                                 r.rotate(resources->GetWorldMap()[tile].getProperties().rotation*90);
                                 r.translate(-rotatePixmap.size().width() / 2, -rotatePixmap.size().height() / 2);
@@ -117,8 +120,8 @@ void GameRender::ScreenUpdate(QPixmap &canvas)
                                              rotatePixmap );
                             }
                             else
-                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x-5,
-                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y-5,
+                            p.drawPixmap(resources->GetWorldMap()[tile].getPos().x * tileSize - cPos.x,
+                                         resources->GetWorldMap()[tile].getPos().y * tileSize - cPos.y,
                                          resources->GetSprite(resources->GetWorldMap()[tile].getID(), resources->TilesStorage()) );
                         }
                         break;

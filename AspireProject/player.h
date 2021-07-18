@@ -28,7 +28,7 @@ struct pMoveState
     bool canMove;
     /* ... */
     pMoveState() : moveLeft(false), moveRight(false), onGround(false),
-                   canJump(true), moveUp(false), moveDown(true), isSprint(false),
+                   canJump(false), moveUp(false), moveDown(true), isSprint(false),
                    isCrouch(false), canMove(true) {};
 };
 struct pSpriteList
@@ -47,6 +47,7 @@ class Player
 {
 private:
     pPosition pos;
+    pPosition spawnPoint;
     double velocityH;
     double velocityV;
     int maxHealth; //player's max health
@@ -58,16 +59,20 @@ private:
 
     ResourceManager *manager;
     std::vector<Tile> *map;
-
+    //bool debugMode;
 
 public:
     Player(pPosition pos, int maxHealth = 1000, int height = 70, int width = 26);
     //void Draw();
-    void Move(QPixmap *canv);
+    void Move(QPixmap *canv, bool debugMode = false);
     void Jump();
     pPosition getPos() { return pos; }
     int getHeight() { return height; }
     int getWidth() { return width; }
+    void respawn();
+    void setRespawnPoint(pPosition spawnPoint);
+    void setRespawnPoint();
+    //void resetSpawnPoint(pPosition spawnPoint);
 
     void increaseVelocity();
     void decreaseVelocity();

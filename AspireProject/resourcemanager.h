@@ -36,7 +36,6 @@ public:
     std::vector<Tile>* MM[3];
     void AddSprite(int id, QPixmap &pixmap, std::vector<QPixmap> &storage);
     QPixmap GetSprite(int id, std::vector<QPixmap> &storage);
-    bool IsExist(int id, std::vector<QPixmap> &storage);
     std::vector<QPixmap>& TilesStorage() { return tiles; }
     std::vector<Tile>& GetWorldMap() { return map; }
 

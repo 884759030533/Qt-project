@@ -4,11 +4,12 @@ ResourceManager* ResourceManager::RM = nullptr;
 
 ResourceManager::ResourceManager()
 {
-
+    srand(time(NULL));
     this->tiles.resize(256);
-    this->map.resize(4096);
+    this->map.resize(8192);
     /* Loading an entire library of sprites with a lots of code ... */
 
+    int tileCount = 1200;
     /* Loading map from file to memory */
     //for (int i =0; i<10; i++) for (int j =0; j<10; j++) map[i+j*10] = Tile(tPosition(i, j, 1),tSize(40, 40), 1);
     for (int i = 0; i<25; i++) map[i+1000] = Tile(tPosition(i,16,0), tSize(), i, tProperties(true, true));
@@ -36,48 +37,46 @@ ResourceManager::ResourceManager()
 
     //for (int i=0;i<1000;i++) map[i+1200] = Tile(tPosition(40+rand()%40, 40+rand()%40, -2+rand()%4, -1+rand()%3), tSize(40, 40), rand()%20, tProperties(true, rand()%2, rand()%3));
 
-    srand(time(NULL));
-    for (int i=0;i<40;i++) map[i] = Tile(tPosition(i+30, 30, 0),tSize(40, 40), 2, tProperties(true, false));
-    for (int i=0;i<40;i++) map[i+40] = Tile(tPosition(i+30, 31, 0),tSize(40, 40), 2, tProperties(true, false));
-    for (int i=0;i<40;i++) map[i+80] = Tile(tPosition(i+30, 32, 0),tSize(40, 40), 2, tProperties(true, false));
-    for (int i=0;i<40;i++) map[i+120] = Tile(tPosition(i+30, 33, 0),tSize(40, 40), 2, tProperties(true, false));
-    map[160] = Tile(tPosition(30, 30, 0),tSize(40, 40), 2, tProperties(true, false, 3));
-    for (int i=0;i<40;i++) map[i+161] = Tile(tPosition(i+30, 29, 1),tSize(40, 40), 19+rand()%2, tProperties(true, false));
-    for (int i=0;i<40;i++) map[i+201] = Tile(tPosition(i+30, 29, 0),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+241] = Tile(tPosition(i+30, 28, 0),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+281] = Tile(tPosition(i+30, 27, 0),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+321] = Tile(tPosition(i+30, 26, 1),tSize(40, 40), 17+rand()%2, tProperties(true, false));
-    for (int i=0;i<40;i++) map[i+361] = Tile(tPosition(i+30, 26, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+401] = Tile(tPosition(i+30, 25, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+441] = Tile(tPosition(i+30, 24, 0),tSize(40, 40), 3+rand()%4, tProperties(true, true, rand()%3));
-    for (int i=0;i<40;i++) map[i+481] = Tile(tPosition(i+30, 24, 1),tSize(40, 40), 7+rand()%2, tProperties(true, false));
+    int leftx1 = 60;
+    /// bottom platform
+    for (int x = 0; x<220; x++, tileCount++) for (int y = 0; y<7; y++, tileCount++) map[tileCount] = Tile(tPosition(leftx1+x, 26+y, 0),tSize(40, 40), 2, tProperties(true, false));
 
-    for (int i=0;i<40;i++) map[i+521] = Tile(tPosition(i+30, 23, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+561] = Tile(tPosition(i+30, 22, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+601] = Tile(tPosition(i+30, 21, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+641] = Tile(tPosition(i+30, 20, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+681] = Tile(tPosition(i+30, 19, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+721] = Tile(tPosition(i+30, 18, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+761] = Tile(tPosition(i+30, 17, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+801] = Tile(tPosition(i+30, 16, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
-    for (int i=0;i<40;i++) map[i+841] = Tile(tPosition(i+30, 15, 0, -1),tSize(40, 40), 13+rand()%4, tProperties(true, false, rand()%3));
+    for (int x = 0; x<220; x++, tileCount++) map[tileCount] = Tile(tPosition(leftx1+x, 25, 2),tSize(40, 40), 21+rand()%2, tProperties(true, false));
+    for (int x = 0; x<220; x++, tileCount++) for (int y = 0; y<3; y++, tileCount++) map[tileCount] = Tile(tPosition(leftx1+x, 23+y, 0),tSize(40, 40), 15+rand()%4, tProperties(true, false, rand()%3));
 
-    map[882] = Tile(tPosition(27, 18, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true));
-    map[883] = Tile(tPosition(30, 20, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true));
-    map[884] = Tile(tPosition(33, 22, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true));
-
-
-
+    for (int x = 0; x<220; x++, tileCount++) map[tileCount] = Tile(tPosition(leftx1+x, 22, 2),tSize(40, 40), 19+rand()%2, tProperties(true, false));
+    for (int x = 0; x<220; x++, tileCount++) for (int y = 0; y<3; y++, tileCount++) map[tileCount] = Tile(tPosition(leftx1+x, 20+y, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
+    /// first room floor
+    for (int x = 0; x<24; x++, tileCount++) map[tileCount] = Tile(tPosition(leftx1+x+1, 20, 2, 1),tSize(40, 40), 7+rand()%2, tProperties(true, true));
+    /// first room left wall black
+    int leftx2 = 36;
+    int lefty2 = -1;
+    for (int x = 0; x<19; x++, tileCount++) for (int y = 0; y<34; y++, tileCount++) map[tileCount] = Tile(tPosition(leftx2+x, lefty2+y, 0),tSize(40, 40), 2, tProperties(true, false));
+    ///corner
+    for (int x = 0; x<5; x++, tileCount++) for (int y = 0; y<7; y++, tileCount++) map[tileCount] = Tile(tPosition(55+x, 26+y, 0),tSize(40, 40), 2, tProperties(true, false));
+    for (int x = 0; x<5; x++, tileCount++) map[tileCount] = Tile(tPosition(55+x, 25, 2),tSize(40, 40), 21+rand()%2, tProperties(true, false));
+    for (int y = 0; y<6; y++, tileCount++) map[tileCount] = Tile(tPosition(55, 20+y, 1),tSize(40, 40), 21+rand()%2, tProperties(true, false, 1));
+    for (int x = 0; x<3; x++, tileCount++) for (int y = 0; y<6; y++, tileCount++) map[tileCount] = Tile(tPosition(55+x, 20+y, 0),tSize(40, 40), 15+rand()%4, tProperties(true, false, rand()%3));
+    for (int x = 0; x<2; x++, tileCount++) for (int y = 0; y<3; y++, tileCount++) map[tileCount] = Tile(tPosition(58+x, 23+y, 0),tSize(40, 40), 15+rand()%4, tProperties(true, false, rand()%3));
+    for (int x = 0; x<2; x++, tileCount++) for (int y = 0; y<3; y++, tileCount++) map[tileCount] = Tile(tPosition(58+x, 20+y, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
+    for (int x = 0; x<2; x++, tileCount++) map[tileCount] = Tile(tPosition(58+x, 22, 2),tSize(40, 40), 19+rand()%2, tProperties(true, false));
+    for (int y = 0; y<3; y++, tileCount++) map[tileCount] = Tile(tPosition(58, 20+y, 1),tSize(40, 40), 19+rand()%2, tProperties(true, false, 1));
+    /// left wall
+    for (int x = 0; x<3; x++, tileCount++) for (int y = 0; y<21; y++, tileCount++) map[tileCount] = Tile(tPosition(55+x, lefty2+y, 0),tSize(40, 40), 15+rand()%4, tProperties(true, false, rand()%3));
+    for (int x = 0; x<3; x++, tileCount++) for (int y = 0; y<21; y++, tileCount++) map[tileCount] = Tile(tPosition(58+x, lefty2+y, 0),tSize(40, 40), 3+rand()%4, tProperties(true, false, rand()%3));
+    for (int y = 0; y<21; y++, tileCount++) map[tileCount] = Tile(tPosition(55, lefty2+y, 1),tSize(40, 40), 21+rand()%2, tProperties(true, false, 1));
+    for (int y = 0; y<21; y++, tileCount++) map[tileCount] = Tile(tPosition(58, lefty2+y, 1),tSize(40, 40), 19+rand()%2, tProperties(true, false, 1));
+    for (int y = 0; y<7; y++, tileCount++) map[tileCount] = Tile(tPosition(60, 13+y, 2),tSize(40, 40), 7+rand()%2, tProperties(true, true, 1));
 
 
 
 
-
+    qDebug() << "tiles - " << tileCount;
     //Tile tempTile(tPosition(0,0,0,0),tSize(0,0),1,tProperties());
 
     tPosition tempTilePos;
     tSize tempTileSize;
-    int ID = 1;
+    //int ID = 1;
     tProperties tempTileProp;
     std::string saveFilename = ":/Level Data/Files/levels/testlevel.level";
     std::fstream afile("F:\\Qt projects\\Qt-project\\AspireProject\\Files\\levels\\testlevel.level"); // file do not open
@@ -134,26 +133,32 @@ ResourceManager::ResourceManager()
             break;
         }
     } // */
+
+    /// SPRITE LOADING AREA
     QString tileType[] = {"air",
                           "z_missing_texture",
                           "void",
                           "blue_stone",
                           "blue_stone_moss",
                           "dark_blue_stone",
-                          "blackstone"};
+                          "blackstone",
+                          "gradient_wall_shadow"};
     QString tileMod[]  = {"",
                           "_transfer",
                           "_inner_corner",
-                          "_outer_corner"};
+                          "_outer_corner",
+                          "_end_corner",
+                          "_slope_left",
+                          "_slope_right"};
 
 
     tiles[0] = QPixmap(":/Tiles/Textures/tiles/air.png"); // air
     tiles[1] = QPixmap(":/Tiles/Textures/tiles/z_missing_texture.png"); // missing texture
     tiles[2] = QPixmap(":/Tiles/Textures/tiles/z_clouds.png"); // blue missing texture
     int _tileCount = 0;
-    for (int _tileType = 0; _tileType < 7; _tileType++)
+    for (int _tileType = 0; _tileType < 8; _tileType++)
     {
-        for(int _tileMod = 0; _tileMod < 4; _tileMod++)
+        for(int _tileMod = 0; _tileMod < 7; _tileMod++)
         {
             for (int _tileVar = 0; _tileVar <=4; _tileVar++)
             {
@@ -202,12 +207,6 @@ QPixmap ResourceManager::GetSprite(int id, std::vector<QPixmap> &storage)
 {
     if (storage[id].isNull()) return storage[1];
     else return storage[id];
-}
-
-bool ResourceManager::IsExist(int id, std::vector<QPixmap> &storage)
-{
-    //if(storage[id] == )
-    return 0;
 }
 
 ResourceManager::~ResourceManager()

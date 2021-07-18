@@ -32,7 +32,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(1280, 720);
         MainWindow->setMinimumSize(QSize(800, 600));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/Icons/Textures/icons/small_icon_x2.png"), QSize(), QIcon::Normal, QIcon::Off);

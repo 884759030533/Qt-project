@@ -3,11 +3,14 @@
 
 QRect lableCoord;
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    is_fullscreen = false;
+    debugMode = false;
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::on_Timer);
@@ -21,19 +24,22 @@ MainWindow::MainWindow(QWidget *parent)
     resourceManager = ResourceManager::CreateManager(); // singletone!
     gameRender = GameRender::CreateGameRender();
 
-    long spawnX = 17;
-    long spawnY = 10;
+    long spawnX = 66;
+    long spawnY = 20;
 
 
     player = new Player(pPosition(spawnX * 40 - 20, spawnY * 40));
-
     gameRender->MoveCamera(spawnX * 40, spawnY * 40);
+    player->setRespawnPoint(pPosition(66 * 40 - 20, 20 * 40 - 10));
+
     //for (int l = 0; l<2; l++) gameRender->cMoveState = CamMoveState(!l,!l,!l,!l);
 
     ui->debugLabel1->setStyleSheet("QLabel {color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 50);}");
     ui->debugLabel2->setStyleSheet("QLabel {color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 50);}");
     ui->label->setStyleSheet("QLabel {color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 50);}");
     ui->label_2->setStyleSheet("QLabel {color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 50);}");
+    //this->setFlags(Qt::FramelessWindowHint);
+
 }
 
 MainWindow::~MainWindow()
@@ -127,8 +133,37 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
         break;
     case Qt::Key_Escape:
         close();
+        break;
+    case Qt::Key_R:
+        player->respawn();
+        break;
+    case Qt::Key_F10:
+    case Qt::Key_C:
+        player->setRespawnPoint();
+        break;
+    case Qt::Key_F9:
+        player->setRespawnPoint(pPosition(66 * 40 - 20, 20 * 40-10));
+        break;
+    case Qt::Key_F7:
+        debugMode = !debugMode;
+        break;
+    case Qt::Key_F11:
+        if (!is_fullscreen)
+        {
+            is_fullscreen = true;
+            this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint);
+            this->setGeometry(0,0,1920,1080);
+            this->show();
+        }
+        else
+        {
+            is_fullscreen = false;
+            this->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowMinMaxButtonsHint | Qt::WindowCloseButtonHint);
+            this->setGeometry(320,180,1280,720);
+            this->show();
+        }
+        break;
     }
-
 }
 
 //void MainWindow::onKeyPress(QKeyEvent *ev)
@@ -211,7 +246,7 @@ void MainWindow::on_Timer()
     //CamMove(gameRender);
     PlayerCamMove(gameRender, player);
     gameRender->ScreenUpdate(canvas);
-    player->Move(&canvas);
+    player->Move(&canvas, debugMode);
     p.begin(&canvas);
     QBrush brush;
     QPen pen;

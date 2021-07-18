@@ -37,6 +37,8 @@ private:
     ResourceManager *resourceManager;
     GameRender *gameRender;
     Player *player;
+    bool is_fullscreen;
+    bool debugMode;
 
 };
 #endif // MAINWINDOW_H

@@ -6,9 +6,9 @@ double velocityWalkLim = 7.1;
 double velocityFallLim = 17.9;
 double jumpStartVelocity = 13.5;
 
-int checkboxRadius = 160;
+int checkboxRadius = 320;
 
-bool debugMode = true;
+bool debugMode = false;
 
 
 Player::Player(pPosition pos, int maxHealth, int height, int width)
@@ -34,8 +34,9 @@ void debugBox(QBrush * br, QPen * pen, QPainter * p, QColor bnd, QColor fill)
     p->setPen(*pen);
 }
 
-void Player::Move(QPixmap *debugCanvas)
+void Player::Move(QPixmap *debugCanvas, bool DebugMode)
 {
+    debugMode = DebugMode;
     GameRender *g;
     QPainter p;
     QBrush brush;
@@ -60,7 +61,7 @@ void Player::Move(QPixmap *debugCanvas)
             // is current tile is solid
             if (manager->GetWorldMap()[tile].getProperties().solid)
             {
-                debugBox(&brush, &pen, &p, QColor(0, 255, 255, 180), QColor(0, 255, 255, 40)); p.drawRect(currentTileX - g->GetCamPos().x, currentTileY - g->GetCamPos().y, currentTileWidth, currentTileHeight);
+                if (debugMode) { debugBox(&brush, &pen, &p, QColor(0, 255, 255, 180), QColor(0, 255, 255, 40)); p.drawRect(currentTileX - g->GetCamPos().x, currentTileY - g->GetCamPos().y, currentTileWidth, currentTileHeight);}
 
                 // searching for tiles has the same Y as player
                 if (pos.y - currentTileY > 0 && pos.y - height - currentTileY - currentTileHeight < 0)
@@ -136,8 +137,18 @@ void Player::Move(QPixmap *debugCanvas)
                         // is player actually stays on ground
                         else if (state.onGround)
                         {
-                            ///if (debugMode) {debugBox(&brush, &pen, &p, QColor(0, 60, 255, 180), QColor(0, 60, 255, 40)); p.drawRect(currentTileX - g->GetCamPos().x, currentTileY - g->GetCamPos().y, currentTileWidth, currentTileHeight);}
 
+                            if (pos.y+1 == currentTileY)
+                            {
+                                if (debugMode) {debugBox(&brush, &pen, &p, QColor(255, 0, 255, 180), QColor(255, 0, 255, 40)); p.drawRect(currentTileX - g->GetCamPos().x, currentTileY - g->GetCamPos().y, currentTileWidth, currentTileHeight);}
+
+                                /// player definitely on ground
+                                state.moveDown = false;
+                                state.onGround = true;
+                                //state.canJump = true;
+                                //pos.y = currentTileY-1;
+                                velocityV = 0.0;
+                            }else
 
                             // if somehow player standing in mid air
                             /*if (pos.y < currentTileY)
@@ -215,7 +226,7 @@ void Player::Move(QPixmap *debugCanvas)
             }
         }
     }
-    p.end();
+    if (debugMode) p.end();
     //if (state.moveUp) state.canJump = false;
     //else if (!state.moveDown) state.canJump = true;
     //// Jump state
@@ -265,10 +276,10 @@ void Player::Move(QPixmap *debugCanvas)
         decreaseVelocityHorizontalToZero();
     }
     // prevent player go out of bounds
-    if (pos.x*pos.x > 9000000 || pos.y*pos.y > 9000000)
+    if (pos.x*pos.x > 100000000 || pos.y*pos.y > 9000000)
     {
-        long x = 6;
-        long y = 2;
+        long x = 66;
+        long y = 20;
         pos.x = x*40 + 20;
         pos.y = y*40;
     }
@@ -283,6 +294,22 @@ void Player::Jump()
     state.moveUp = true;
     state.canJump = false;
 
+}
+
+void Player::respawn()
+{
+    state = pMoveState();
+    pos = spawnPoint;
+}
+
+void Player::setRespawnPoint(pPosition spawnPoint)
+{
+    this->spawnPoint = spawnPoint;
+}
+
+void Player::setRespawnPoint()
+{
+    this->spawnPoint = pos;
 }
 
 void Player::increaseVelocityLeft()

@@ -129,30 +129,43 @@ release/qrc_resources.cpp: ../AspireProject/resources.qrc \
 		../AspireProject/Textures/BG/After\ a\ thousand\ years....png \
 		../AspireProject/Textures/BG/Space\ BG.png \
 		../AspireProject/Textures/templates/player_idle.gif \
+		../AspireProject/Textures/tiles/dark_blue_stone_1.png \
+		../AspireProject/Textures/tiles/blue_stone_border_slope_1.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_border_slope_2.png \
+		../AspireProject/Textures/tiles/blue_stone_border_2.png \
+		../AspireProject/Textures/tiles/z_no_texture.bmp \
+		../AspireProject/Textures/tiles/blue_stone_2.png \
+		../AspireProject/Textures/tiles/z_clouds.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_3.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_1.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_outer_corner_1.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_2.png \
+		../AspireProject/Textures/tiles/gradient_wall_shadow.png \
+		../AspireProject/Textures/tiles/blue_stone_1.png \
 		../AspireProject/Textures/tiles/blackstone_transfer_1.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_2.png \
-		../AspireProject/Textures/tiles/dark_blue_stone_1.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_end_corner_1.png \
+		../AspireProject/Textures/tiles/blue_stone_moss_end_corner_2.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_border_1.png \
+		../AspireProject/Textures/tiles/gradient_wall_shadow_slope_right.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_border_slope_1.png \
+		../AspireProject/Textures/tiles/blue_stone_border_slope_2.png \
 		../AspireProject/Textures/tiles/dark_blue_stone_transfer_2.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_1.png \
 		../AspireProject/Textures/tiles/void.png \
-		../AspireProject/Textures/tiles/z_no_texture.bmp \
 		../AspireProject/Textures/tiles/z_oh_no_green.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_2.png \
-		../AspireProject/Textures/tiles/blue_stone_2.png \
-		../AspireProject/Textures/tiles/z_clouds.png \
 		../AspireProject/Textures/tiles/blue_stone_3.png \
 		../AspireProject/Textures/tiles/air.png \
 		../AspireProject/Textures/tiles/dark_blue_stone_transfer_1.png \
-		../AspireProject/Textures/tiles/dark_blue_stone_3.png \
 		../AspireProject/Textures/tiles/dark_blue_stone_4.png \
-		../AspireProject/Textures/tiles/blue_stone_moss_inner_corner_1.png \
 		../AspireProject/Textures/tiles/blue_stone_moss_outer_corner_2.png \
-		../AspireProject/Textures/tiles/blue_stone_moss_outer_corner_1.png \
 		../AspireProject/Textures/tiles/blue_stone_4.png \
 		../AspireProject/Textures/tiles/blackstone_transfer_2.png \
-		../AspireProject/Textures/tiles/dark_blue_stone_2.png \
+		../AspireProject/Textures/tiles/blue_stone_border_1.png \
+		../AspireProject/Textures/tiles/dark_blue_stone_border_2.png \
 		../AspireProject/Textures/tiles/z_missing_texture.png \
-		../AspireProject/Textures/tiles/blue_stone_1.png \
+		../AspireProject/Textures/tiles/gradient_wall_shadow_slope_left.png \
 		../AspireProject/Files/levels/testlevel.level \
 		../AspireProject/Textures/icons/small_logo.ico \
 		../AspireProject/Textures/icons/small_icon_x2.png
@@ -328,6 +341,7 @@ release/moc_gamerender.cpp: ../AspireProject/gamerender.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfiledevice.h \
 		../AspireProject/tile.h \
 		../AspireProject/player.h \
+		../AspireProject/gamerender.h \
 		release/moc_predefs.h \
 		../../../Qt/6.1.2/mingw81_64/bin/moc.exe
 	F:\Qt\6.1.2\mingw81_64\bin\moc.exe $(DEFINES) --include "F:/Qt projects/Qt-project/build-AspireProject-Desktop_Qt_6_1_2_MinGW_64_bit-Debug/release/moc_predefs.h" -IF:/Qt/6.1.2/mingw81_64/mkspecs/win32-g++ -I"F:/Qt projects/Qt-project/AspireProject" -IF:/Qt/6.1.2/mingw81_64/include -IF:/Qt/6.1.2/mingw81_64/include/QtWidgets -IF:/Qt/6.1.2/mingw81_64/include/QtGui -IF:/Qt/6.1.2/mingw81_64/include/QtCore -I. -IF:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IF:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IF:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IF:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IF:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IF:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\AspireProject\gamerender.h -o release\moc_gamerender.cpp
@@ -1171,6 +1185,33 @@ release/player.o: ../AspireProject/player.cpp ../AspireProject/player.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qurl.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/quuid.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/qfactoryinterface.h \
+		../AspireProject/gamerender.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/QLabel \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qtwidgets-config.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qwidget.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qpalette.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtWidgets/qsizepolicy.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qcursor.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qbitmap.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qkeysequence.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qevent.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qeventpoint.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qvector2d.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qvectornd.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qpointingdevice.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qinputdevice.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qscreen.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QList \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QObject \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QRect \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QSize \
+		../../../Qt/6.1.2/mingw81_64/include/QtCore/QSizeF \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/QTransform \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qpicture.h \
+		../../../Qt/6.1.2/mingw81_64/include/QtGui/qtextdocument.h \
 		../AspireProject/resourcemanager.h \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/QDebug \
 		../../../Qt/6.1.2/mingw81_64/include/QtCore/QRandomGenerator \

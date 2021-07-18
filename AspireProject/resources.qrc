@@ -25,6 +25,19 @@
         <file>Textures/tiles/z_no_texture.bmp</file>
         <file>Textures/tiles/z_oh_no_green.png</file>
         <file>Textures/templates/player_idle.gif</file>
+        <file>Textures/tiles/blue_stone_border_1.png</file>
+        <file>Textures/tiles/blue_stone_border_2.png</file>
+        <file>Textures/tiles/blue_stone_border_slope_1.png</file>
+        <file>Textures/tiles/blue_stone_border_slope_2.png</file>
+        <file>Textures/tiles/blue_stone_moss_end_corner_1.png</file>
+        <file>Textures/tiles/blue_stone_moss_end_corner_2.png</file>
+        <file>Textures/tiles/dark_blue_stone_border_1.png</file>
+        <file>Textures/tiles/dark_blue_stone_border_2.png</file>
+        <file>Textures/tiles/dark_blue_stone_border_slope_1.png</file>
+        <file>Textures/tiles/dark_blue_stone_border_slope_2.png</file>
+        <file>Textures/tiles/gradient_wall_shadow.png</file>
+        <file>Textures/tiles/gradient_wall_shadow_slope_left.png</file>
+        <file>Textures/tiles/gradient_wall_shadow_slope_right.png</file>
     </qresource>
     <qresource prefix="/Icons">
         <file>Textures/icons/small_logo.ico</file>
